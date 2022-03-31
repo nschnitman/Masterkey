@@ -11,6 +11,8 @@
     <link href="assets/libs/jquery-steps/jquery.steps.css" rel="stylesheet">
     <link href="assets/libs/jquery-steps/steps.css" rel="stylesheet">
     <link href="dist/css/style.min.css" rel="stylesheet">
+    <link href="dist/css/exchange.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -272,7 +274,7 @@
             <div class="container-fluid">
               <div class="card">
                 <div class="card-body wizard-content">
-                    <h4 class="card-title">Basic Form Example</h4>
+                    <h4 class="card-title">New Exchange</h4>
                     <h6 class="card-subtitle"></h6>
                     <form id="example-form" action="#" class="m-t-40">
                         <div>
@@ -295,33 +297,24 @@
                                 <input id="telefono" name="telefono" type="text" class="form-control" disabled>
                                 <p>View Only</p>
                             </section>
-                            <h3>Hints</h3>
+                            <h3>Items</h3>
                             <section>
                             <div>
+                                <input type="checkbox" id="check-master" onclick="master()">
                                 <label class="col-md-3">Master</label>
-                                <div class="col-md-9">
-                                    <select class="select2 form-control custom-select" style="width: 70%; height:36px;">
-                                        <option value="CA">California</option>
-                                        <option value="NV">Nevada</option>
-                                        <option value="OR">Oregon</option>
-                                        <option value="WA">Washington</option>
+                                <div class="col-md-9" id="master-div" style="display: none;">
+                                    <select id="master-select" class="select2 form-control custom-select" style="width: 70%; height:36px;"></select>
                                     </select>
                                 </div>
-                            
+
+                                <input type="checkbox" id="check-telefono" onclick="telefon()">
                                 <label class="col-md-3">Telefono</label>
-                                <div class="col-md-9">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="customControlValidation1" name="radio-stacked">
-                                        <label class="custom-control-label" for="customControlValidation1">First One</label>
-                                    </div>
-                                        <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked">
-                                        <label class="custom-control-label" for="customControlValidation2">Second One</label>
-                                    </div>
-                                        <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked">
-                                        <label class="custom-control-label" for="customControlValidation3">Third One</label>
-                                    </div>
+                                <div class="col-md-9" id="telefono-div">
+                                </div>
+
+                                <input type="checkbox" id="check-llaves" onclick="llaves()">
+                                <label class="col-md-3">Llaves</label>
+                                <div class="col-md-9" id="llaves-div">
                                 </div>
                             </div>
                             </section>
@@ -396,6 +389,7 @@
 
 <script>
     // Basic Example with form
+var taf_id;
 var form = $("#example-form");
  form.children("div").steps({
     headerTag: "h3",
@@ -418,7 +412,6 @@ const checkUser = document.getElementById('checkUser');
 let userExists = 0;
 
 function exchange() {
-    const ul = document.getElementById('card_id');
     const url = `https://pj-serverless-nschnitman.vercel.app/api/users/card/${card.value}`;
     fetch(url)
     .then((resp) => resp.json())
@@ -429,8 +422,8 @@ function exchange() {
         document.getElementById("surname").placeholder = dat.last_name
         document.getElementById("telefono").placeholder = dat.telefono
         document.getElementById("tafkid").placeholder = dat.tafkid_id
+        taf_id = dat.tafkid_id
          })
-        console.log(data)
     })  
 
     setTimeout(function() {
@@ -445,6 +438,55 @@ function exchange() {
 
 }
 
+function master(){
+    const url_master = `https://pj-serverless-nschnitman.vercel.app/api/masterim/${taf_id}`;
+    fetch(url_master)
+    .then((resp) => resp.json())
+    .then(function(data) {
+        for (var i = 0; i < data.length; i++) {
+            $("#master-select")
+            .append('<option value="'+data[i].id + '">'+ data[i].name + '</option>');
+        }
+    })  
+}
+
+function telefon(){
+    const url_telefono = `https://pj-serverless-nschnitman.vercel.app/api/telefonos/${taf_id}`;
+    fetch(url_telefono)
+    .then((resp) => resp.json())
+    .then(function(data) {
+    if(data.length == 0){
+        $("#telefono-div")
+            .append('אין טלפון לתפקיד הזה')
+    }
+    else{
+        for (var i = 0; i < data.length; i++) {
+            $("#telefono-div")
+            .append('<div class="custom-control custom-radio"><input value="'+ data[i].id +'"type="radio" class="custom-control-input" id="TcustomControlValidation'+ i +'" name="Tradio-stacked"><label class="custom-control-label" for="TcustomControlValidation'+ i +'">'+ data[i].name+ '</label></div>');
+        }
+    }})  
+}
+
+function llaves(){
+    const url_llaves = `https://pj-serverless-nschnitman.vercel.app/api/llaves/${taf_id}`;
+    fetch(url_llaves)
+    .then((resp) => resp.json())
+    .then(function(data) {
+    if(data.length == 0){
+        $("#llaves-div")
+            .append('אין מפתחות לתפקיד הזה')
+    }
+    else{
+        for (var i = 0; i < data.length; i++) {
+            $("#llaves-div")
+            .append('<div class="custom-control custom-radio"><input value="'+ data[i].id +'"type="radio" class="custom-control-input" id="LcustomControlValidation'+ i +'" name="Lradio-stacked"><label class="custom-control-label" for="LcustomControlValidation'+ i +'">'+ data[i].name+ '</label></div>');
+        }
+    }})  
+    
+}
+
+
+
 checkUser.addEventListener('click', () => {
     exchange();
 })
@@ -455,6 +497,20 @@ card.addEventListener("keyup", function(event) {
   }
 })
 
+$(document).ready(function () {
+    //Master
+    $('#check-master').change(function () {
+      $('#master-div').fadeToggle();
+    });
+    // Telefono
+    $('#check-telefono').change(function () {
+      $('#telefono-div').fadeToggle();
+    });
+    //Llaves
+    $('#check-llaves').change(function () {
+      $('#llaves-div').fadeToggle();
+    });
+});
 
 </script>
 </body>

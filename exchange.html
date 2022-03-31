@@ -297,11 +297,33 @@
                             </section>
                             <h3>Hints</h3>
                             <section>
-                                <ul>
-                                    <li>Foo</li>
-                                    <li>Bar</li>
-                                    <li>Foobar</li>
-                                </ul>
+                            <div>
+                                <label class="col-md-3">Master</label>
+                                <div class="col-md-9">
+                                    <select class="select2 form-control custom-select" style="width: 70%; height:36px;">
+                                        <option value="CA">California</option>
+                                        <option value="NV">Nevada</option>
+                                        <option value="OR">Oregon</option>
+                                        <option value="WA">Washington</option>
+                                    </select>
+                                </div>
+                            
+                                <label class="col-md-3">Telefono</label>
+                                <div class="col-md-9">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" id="customControlValidation1" name="radio-stacked">
+                                        <label class="custom-control-label" for="customControlValidation1">First One</label>
+                                    </div>
+                                        <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked">
+                                        <label class="custom-control-label" for="customControlValidation2">Second One</label>
+                                    </div>
+                                        <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked">
+                                        <label class="custom-control-label" for="customControlValidation3">Third One</label>
+                                    </div>
+                                </div>
+                            </div>
                             </section>
                             <h3>Finish</h3>
                             <section>
@@ -394,7 +416,8 @@ var form = $("#example-form");
 const card = document.getElementById('card_id');
 const checkUser = document.getElementById('checkUser');
 let userExists = 0;
-checkUser.addEventListener('click', () => {
+
+function exchange() {
     const ul = document.getElementById('card_id');
     const url = `https://pj-serverless-nschnitman.vercel.app/api/users/card/${card.value}`;
     fetch(url)
@@ -420,7 +443,18 @@ checkUser.addEventListener('click', () => {
         } 
     }, 3000);
 
+}
+
+checkUser.addEventListener('click', () => {
+    exchange();
 })
+
+card.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+    exchange();
+  }
+})
+
 
 </script>
 </body>

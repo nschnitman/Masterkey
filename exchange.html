@@ -280,12 +280,20 @@
                             <section>
                                 <label for="userName">CARD ID *</label>
                                 <input id="card_id" name="card_id" type="text" class="required form-control">
-                                <button type="button" class="btn btn-warning margin-5 text-white" data-toggle="modal" data-target="#Modal2">CHECK</button>
-                                <p>(*) Mandatory</p>
+                                <button type="button" class="btn btn-warning margin-5 text-white" data-toggle="modal" data-target="#Modal2" style="margin-top: 20px;">CHECK</button>
+                                 <p>(*) Mandatory</p>
                             </section>
                             <h3>Profile</h3>
                             <section id="section-user">
-                              
+                                <label for="name">First name</label>
+                                <input id="name" name="name" type="text" class="form-control" disabled>
+                                <label for="surname">Last name</label>
+                                <input id="surname" name="surname" type="text" class="form-control" disabled>
+                                <label for="tafkid">Tafkid</label>
+                                <input id="tafkid" name="tafkid" type="text" class="form-control" disabled>
+                                <label for="telefono">Telefono</label>
+                                <input id="telefono" name="telefono" type="text" class="form-control" disabled>
+                                <p>View Only</p>
                             </section>
                             <h3>Hints</h3>
                             <section>
@@ -331,13 +339,13 @@
   <div class="modal-dialog" role="document">
       <div class="modal-content">
           <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Alert Model</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
               </button>
           </div>
           <div class="modal-body">
-              Lorem ipsum dolor sit amet...
+              El usuario no existe
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -386,28 +394,27 @@ var form = $("#example-form");
         alert("Submitted!");
     }
 });
+const card = document.getElementById('card_id');
 
+  card.addEventListener('change', () => {
+    const ul = document.getElementById('card_id');
+    const url = `https://pj-serverless-nschnitman.vercel.app/api/users/card/${card.value}`;
+    alert(`https://pj-serverless-nschnitman.vercel.app/api/users/card/${card.value}`)
+    fetch(url)
+    .then((resp) => resp.json())
+    .then(function(data) {
+         return data.map(function(dat) {
+        document.getElementById("name").placeholder = dat.name
+        document.getElementById("surname").placeholder = dat.last_name
+        document.getElementById("telefono").placeholder = dat.telefono
+        document.getElementById("tafkid").placeholder = dat.tafkid_id
+         })
+        console.log(data)
+    })   
 
-  const character = document.getElementById('card_id');
+     
 
-  character.addEventListener('change', () => {
-    $('#zero_config').DataTable( {
-      ajax: {
-        url: `https://pj-serverless-nschnitman.vercel.app/api/users/card/${character.value}`,
-      dataSrc: ''
-      },
-      columns: [ 
-                  { data: 'id' },
-                  { data: 'name' },
-                  { data: 'last_name' },
-                  { data: 'telefono' },
-                  { data: 'tafkid_id' },
-              ]
-          } )
-        })
-
- 
-
+    });
 </script>
 </body>
 

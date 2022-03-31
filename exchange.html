@@ -280,7 +280,7 @@
                             <section>
                                 <label for="userName">CARD ID *</label>
                                 <input id="card_id" name="card_id" type="text" class="required form-control">
-                                <button type="button" class="btn btn-warning margin-5 text-white" data-toggle="modal" data-target="#Modal2" style="margin-top: 20px;">CHECK</button>
+                                <button type="button" id="checkUser"class="btn btn-warning margin-5 text-white" data-toggle="modal" data-target="#Modal2" style="margin-top: 20px;">CHECK</button>
                                  <p>(*) Mandatory</p>
                             </section>
                             <h3>Profile</h3>
@@ -344,12 +344,10 @@
                   <span aria-hidden="true">&times;</span>
               </button>
           </div>
-          <div class="modal-body">
-              El usuario no existe
+          <div class="modal-body" id="alerta-user">
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
           </div>
       </div>
   </div>
@@ -373,7 +371,6 @@
 <!-- this page js -->
 <script src="assets/libs/jquery-steps/build/jquery.steps.min.js"></script>
 <script src="assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="assets/extra-libs/DataTables/datatables.min.js"></script>
 
 <script>
     // Basic Example with form
@@ -395,26 +392,36 @@ var form = $("#example-form");
     }
 });
 const card = document.getElementById('card_id');
-
-  card.addEventListener('change', () => {
+const checkUser = document.getElementById('checkUser');
+let userExists = 0;
+checkUser.addEventListener('click', () => {
     const ul = document.getElementById('card_id');
     const url = `https://pj-serverless-nschnitman.vercel.app/api/users/card/${card.value}`;
-    alert(`https://pj-serverless-nschnitman.vercel.app/api/users/card/${card.value}`)
     fetch(url)
     .then((resp) => resp.json())
     .then(function(data) {
          return data.map(function(dat) {
+             userExists = 1
         document.getElementById("name").placeholder = dat.name
         document.getElementById("surname").placeholder = dat.last_name
         document.getElementById("telefono").placeholder = dat.telefono
         document.getElementById("tafkid").placeholder = dat.tafkid_id
          })
         console.log(data)
-    })   
+    })  
 
-     
+    setTimeout(function() {
+        if(userExists ===0){
+            if (confirm( "El usuario no existe!  Desea crearlo?")){
+            top.location.href = "new-user.html"
+            }
+        }else{
+            document.getElementById("alerta-user").innerHTML = "USURARIO OK"
+        } 
+    }, 3000);
 
-    });
+})
+
 </script>
 </body>
 

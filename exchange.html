@@ -300,28 +300,36 @@
                             <h3>Items</h3>
                             <section>
                             <div>
-                                <input type="checkbox" id="check-master" onclick="master()">
-                                <label class="col-md-3">Master</label>
-                                <div class="col-md-9" id="master-div" style="display: none;">
-                                    <select id="master-select" class="select2 form-control custom-select" style="width: 70%; height:36px;"></select>
-                                    </select>
+                                <div style="column-width: 33%;">
+                                    <input type="checkbox" id="check-master" onclick="master()">
+                                    <label class="col-md-3">Master</label>
+                                    <div class="col-md-9" id="master-div" style="display: none;">
+                                        <select id="master-select" class="select2 form-control custom-select" style="width: 70%; height:36px;" onselect="addM()"></select>
+                                            <option value="null"></option>
+                                        </select>
+                                    </div>
                                 </div>
-
-                                <input type="checkbox" id="check-telefono" onclick="telefon()">
-                                <label class="col-md-3">Telefono</label>
-                                <div class="col-md-9" id="telefono-div">
+                                <div style="column-width: 33%;">
+                                    <input type="checkbox" id="check-telefono" onclick="telefon()">
+                                    <label class="col-md-3">Telefono</label>
+                                    <div class="col-md-9" id="telefono-div">
+                                    </div>
                                 </div>
-
-                                <input type="checkbox" id="check-llaves" onclick="llaves()">
-                                <label class="col-md-3">Llaves</label>
-                                <div class="col-md-9" id="llaves-div">
+                                <div style="column-width: 33%;">
+                                    <input type="checkbox" id="check-llaves" onclick="llaves()">
+                                    <label class="col-md-3">Llaves</label>
+                                    <div class="col-md-9" id="llaves-div">
+                                    </div>
                                 </div>
                             </div>
                             </section>
                             <h3>Finish</h3>
                             <section>
-                                <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required">
-                                <label for="acceptTerms">I agree with the Terms and Conditions.</label>
+                                <!-- <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required">
+                                <label for="acceptTerms">I agree with the Terms and Conditions.</label> -->
+                                <div>
+                                    <p>Autorizar a ${last_name, userName}</p>
+                                </div>
                             </section>
                         </div>
                     </form>
@@ -389,7 +397,16 @@
 
 <script>
     // Basic Example with form
-var taf_id;
+    //ID para categorizar items
+    var taf_id;
+    var user_id
+
+    //Variables principales para guardar respuestas de las elecciones
+    var masterSeleccion = null
+    var telefonoSeleccion = null
+    var llaveSeleccion = null
+
+
 var form = $("#example-form");
  form.children("div").steps({
     headerTag: "h3",
@@ -404,7 +421,7 @@ var form = $("#example-form");
         return form.valid();
     },
     onFinished: function(event, currentIndex) {
-        alert("Submitted!");
+        resultado();
     }
 });
 const card = document.getElementById('card_id');
@@ -418,6 +435,7 @@ function exchange() {
     .then(function(data) {
          return data.map(function(dat) {
              userExists = 1
+        user_id = dat.id
         document.getElementById("name").placeholder = dat.name
         document.getElementById("surname").placeholder = dat.last_name
         document.getElementById("telefono").placeholder = dat.telefono
@@ -428,13 +446,14 @@ function exchange() {
 
     setTimeout(function() {
         if(userExists ===0){
+            document.getElementById("alerta-user").innerHTML = "USURARIO FAIL"
             if (confirm( "El usuario no existe!  Desea crearlo?")){
             top.location.href = "new-user.html"
             }
         }else{
             document.getElementById("alerta-user").innerHTML = "USURARIO OK"
         } 
-    }, 3000);
+    }, 1500);
 
 }
 
@@ -462,7 +481,7 @@ function telefon(){
     else{
         for (var i = 0; i < data.length; i++) {
             $("#telefono-div")
-            .append('<div class="custom-control custom-radio"><input value="'+ data[i].id +'"type="radio" class="custom-control-input" id="TcustomControlValidation'+ i +'" name="Tradio-stacked"><label class="custom-control-label" for="TcustomControlValidation'+ i +'">'+ data[i].name+ '</label></div>');
+            .append('<div class="custom-control custom-radio"><input value="'+ data[i].id +'"type="radio" class="custom-control-input" id="TcustomControlValidation'+ i +'" name="Tradio-stacked" onclick="addT('+ i +')"><label class="custom-control-label" for="TcustomControlValidation'+ i +'">'+ data[i].name+ '</label></div>');
         }
     }})  
 }
@@ -479,12 +498,85 @@ function llaves(){
     else{
         for (var i = 0; i < data.length; i++) {
             $("#llaves-div")
-            .append('<div class="custom-control custom-radio"><input value="'+ data[i].id +'"type="radio" class="custom-control-input" id="LcustomControlValidation'+ i +'" name="Lradio-stacked"><label class="custom-control-label" for="LcustomControlValidation'+ i +'">'+ data[i].name+ '</label></div>');
+            .append('<div class="custom-control custom-radio"><input value="'+ data[i].id +'"type="radio" class="custom-control-input" id="LcustomControlValidation'+ i +'" name="Lradio-stacked" onclick="addL('+ i +')"><label class="custom-control-label" for="LcustomControlValidation'+ i +'">'+ data[i].name+ '</label></div>');
         }
     }})  
     
 }
+function addM(){
+    var select = document.getElementById('master-select');
+    masterSeleccion = select.options[select.selectedIndex].value;
+}
 
+function addT(i){
+    telefonoSeleccion = ''
+    telefonoSeleccion = document.getElementById('TcustomControlValidation'+i).value
+}
+function addL(i){
+    llaveSeleccion = ''
+    llaveSeleccion = document.getElementById('LcustomControlValidation'+i).value
+}
+
+
+function resultado(){
+//Escribir codigo para conseguir el elemento elegido de master llaves y telefnonos, mostarrlos en una lista y acomodarlos con css. mostar solo 3, y pasapor por apis individuales y probar que funcionen, sino cambiar el docio de sql para que acepte multiples lineas, 
+addM() 
+alert('Master:'+ masterSeleccion + ' Telefono:' + telefonoSeleccion + ' Llaves:' + llaveSeleccion)
+
+//API -> Envio de datos al server. {Hold y Swaps}
+    //type: {1 Master, 2 Llaves, 3 Telefonos}
+    const AddMaster = {
+        type: '1',
+        user_id: user_id,
+        item_id: masterSeleccion,
+    }
+    const AddLlaves = {
+        type: '2',
+        user_id: user_id,
+        item_id: llaveSeleccion,
+    }
+    const AddTelefono = {
+        type: '3',
+        user_id: user_id,
+        item_id: telefonoSeleccion,
+    }
+    var SendMaster = document.getElementById("check-master").checked
+    var SendLlaves =  document.getElementById("check-llaves").checked
+    var SendTelefono = document.getElementById("check-telefono").checked
+    if(SendMaster){
+    fetch('https://pj-serverless-nschnitman.vercel.app/api/hold', {
+    method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(AddMaster)
+    }).then(respuesta => {
+        alert("Master Exchanged!!!")
+    })}
+   
+    if(SendLlaves){
+    fetch('https://pj-serverless-nschnitman.vercel.app/api/hold', {
+    method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(AddLlaves)
+    }).then(respuesta => {
+        alert("Llaves Exchanged!!!")
+    })}
+   
+    if(SendTelefono){
+    fetch('https://pj-serverless-nschnitman.vercel.app/api/hold', {
+    method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(AddTelefono)
+    }).then(respuesta => {
+        alert("Telefono Exchanged!!!")
+    })}
+
+}
 
 
 checkUser.addEventListener('click', () => {

@@ -521,8 +521,6 @@ function addL(i){
 function resultado(){
 //Escribir codigo para conseguir el elemento elegido de master llaves y telefnonos, mostarrlos en una lista y acomodarlos con css. mostar solo 3, y pasapor por apis individuales y probar que funcionen, sino cambiar el docio de sql para que acepte multiples lineas, 
 addM() 
-alert('Master:'+ masterSeleccion + ' Telefono:' + telefonoSeleccion + ' Llaves:' + llaveSeleccion)
-
 //API -> Envio de datos al server. {Hold y Swaps}
     //type: {1 Master, 2 Llaves, 3 Telefonos}
     const AddMaster = {
@@ -551,7 +549,6 @@ alert('Master:'+ masterSeleccion + ' Telefono:' + telefonoSeleccion + ' Llaves:'
         },
         body: JSON.stringify(AddMaster)
     }).then(respuesta => {
-        alert("Master Exchanged!!!")
     })}
    
     if(SendLlaves){
@@ -562,7 +559,6 @@ alert('Master:'+ masterSeleccion + ' Telefono:' + telefonoSeleccion + ' Llaves:'
         },
         body: JSON.stringify(AddLlaves)
     }).then(respuesta => {
-        alert("Llaves Exchanged!!!")
     })}
    
     if(SendTelefono){
@@ -573,9 +569,9 @@ alert('Master:'+ masterSeleccion + ' Telefono:' + telefonoSeleccion + ' Llaves:'
         },
         body: JSON.stringify(AddTelefono)
     }).then(respuesta => {
-        alert("Telefono Exchanged!!!")
     })}
 
+    top.location.href = 'index.html'
 }
 
 

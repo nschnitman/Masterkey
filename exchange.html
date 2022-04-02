@@ -468,7 +468,6 @@ function master(){
         }
     })  
 }
-
 function telefon(){
     const url_telefono = `https://pj-serverless-nschnitman.vercel.app/api/telefonos/${taf_id}`;
     fetch(url_telefono)
@@ -485,7 +484,6 @@ function telefon(){
         }
     }})  
 }
-
 function llaves(){
     const url_llaves = `https://pj-serverless-nschnitman.vercel.app/api/llaves/${taf_id}`;
     fetch(url_llaves)
@@ -503,11 +501,11 @@ function llaves(){
     }})  
     
 }
+
 function addM(){
     var select = document.getElementById('master-select');
     masterSeleccion = select.options[select.selectedIndex].value;
 }
-
 function addT(i){
     telefonoSeleccion = ''
     telefonoSeleccion = document.getElementById('TcustomControlValidation'+i).value
@@ -538,9 +536,31 @@ addM()
         user_id: user_id,
         item_id: telefonoSeleccion,
     }
+    const AddMaster2 = {
+        type: '1',
+        user_id: user_id,
+        item_id: masterSeleccion,
+        flow: "IN",
+        signature: "Nico",
+    }
+    const AddLlaves2 = {
+        type: '2',
+        user_id: user_id,
+        item_id: llaveSeleccion,
+        flow: "IN",
+        signature: "Nico",
+    }
+    const AddTelefono2 = {
+        type: '3',
+        user_id: user_id,
+        item_id: telefonoSeleccion,
+        flow: "IN",
+        signature: "Nico",
+    }
     var SendMaster = document.getElementById("check-master").checked
     var SendLlaves =  document.getElementById("check-llaves").checked
     var SendTelefono = document.getElementById("check-telefono").checked
+    setTimeout(function() {
     if(SendMaster){
     fetch('https://pj-serverless-nschnitman.vercel.app/api/hold', {
     method: 'POST',
@@ -549,8 +569,18 @@ addM()
         },
         body: JSON.stringify(AddMaster)
     }).then(respuesta => {
-    })}
-   
+    })
+    console.log(AddMaster2)
+    fetch('https://pj-serverless-nschnitman.vercel.app/api/swaps', {
+    method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(AddMaster2)
+    }).then(respuesta => {
+    })}},  500)
+    
+    setTimeout(function() {
     if(SendLlaves){
     fetch('https://pj-serverless-nschnitman.vercel.app/api/hold', {
     method: 'POST',
@@ -559,8 +589,17 @@ addM()
         },
         body: JSON.stringify(AddLlaves)
     }).then(respuesta => {
-    })}
-   
+    })
+    fetch('https://pj-serverless-nschnitman.vercel.app/api/swaps', {
+    method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(AddLlaves2)
+    }).then(respuesta => {
+    })}},500)
+
+    setTimeout(function() {
     if(SendTelefono){
     fetch('https://pj-serverless-nschnitman.vercel.app/api/hold', {
     method: 'POST',
@@ -569,9 +608,17 @@ addM()
         },
         body: JSON.stringify(AddTelefono)
     }).then(respuesta => {
-    })}
+    })
+    fetch('https://pj-serverless-nschnitman.vercel.app/api/swaps', {
+    method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(AddTelefono2)
+    }).then(respuesta => {
+    })}}, 500)
 
-    top.location.href = 'index.html'
+    //top.location.href = 'index.html'
 }
 
 

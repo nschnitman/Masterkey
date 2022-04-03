@@ -50,7 +50,7 @@
                         <h3 class="login-text">Pj-MasterKey / WepAPP</h3>
                     </div>
                     <!-- Form -->
-                    <form class="form-horizontal m-t-20" id="loginform" action="index.html">
+                    <form class="form-horizontal m-t-20" id="loginform">
                         <div class="row p-b-30">
                             <div class="col-12">
                                 <div class="input-group mb-3">
@@ -105,7 +105,6 @@
         $("#loginform").fadeIn();
     });
 
-
     function login(){
         //data-toggle="modal" data-target="#Modal2"
         //Chequear si el usuario existe y es de bitajon. Sino rechazar
@@ -130,7 +129,7 @@
                if(userExists === 0){
                 alert("שם משתמש לא קיים")
             }else{
-                top.location.href = "index.html"
+                top.location.href = "index.php"
             }},500)
     }
     card_id.addEventListener("keyup", function(event) {

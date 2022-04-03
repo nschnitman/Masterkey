@@ -6,12 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>Pj-MasterKey - חלוקת דברים</title>
+    <title>Pj-MasterKey - החזרת דברים</title>
     <!-- Custom CSS -->
     <link href="assets/libs/jquery-steps/jquery.steps.css" rel="stylesheet">
     <link href="assets/libs/jquery-steps/steps.css" rel="stylesheet">
     <link href="dist/css/style.min.css" rel="stylesheet">
-    <link href="dist/css/exchange.css" rel="stylesheet">
 
 </head>
 
@@ -304,27 +303,19 @@
                             </section>
                             <h3>דברים</h3>
                             <section>
-                            <div>
-                                <div style="column-width: 33%;">
-                                    <input type="checkbox" id="check-master" onclick="master()">
+                            <div id="div-general">
+                                <h3>החזרה של:</h3>
+                                <div style="column-width: 33%;" id="master-div">
+                                    <input type="checkbox" id="check-master" disabled>
                                     <label class="col-md-3">מאסטר</label>
-                                    <div class="col-md-9" id="master-div" style="display: none;">
-                                        <select id="master-select" class="select2 form-control custom-select" style="width: 70%; height:36px;" onselect="addM()"></select>
-                                            <option value="null"></option>
-                                        </select>
-                                    </div>
                                 </div>
-                                <div style="column-width: 33%;">
-                                    <input type="checkbox" id="check-telefono" onclick="telefon()">
+                                <div style="column-width: 33%;" id="telefono-div">
+                                    <input type="checkbox" id="check-telefono" disabled>
                                     <label class="col-md-3">טלפון</label>
-                                    <div class="col-md-9" id="telefono-div">
-                                    </div>
                                 </div>
-                                <div style="column-width: 33%;">
-                                    <input type="checkbox" id="check-llaves" onclick="llaves()">
+                                <div style="column-width: 33%;" id="llaves-div">
+                                    <input type="checkbox" id="check-llaves" disabled>
                                     <label class="col-md-3">מפתחות</label>
-                                    <div class="col-md-9" id="llaves-div">
-                                    </div>
                                 </div>
                             </div>
                             </section>
@@ -367,7 +358,7 @@
   <div class="modal-dialog" role="document">
       <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">אזהרה</h5>
+              <h5 class="modal-title" id="exampleModalLabel">אזהרה</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
               </button>
@@ -404,7 +395,7 @@
     // Basic Example with form
     //ID para categorizar items
     var taf_id;
-    var user_id
+    var user_id;
 
     //Variables principales para guardar respuestas de las elecciones
     var masterSeleccion = null
@@ -460,115 +451,110 @@ function exchange() {
         } 
     }, 1500);
 
+    setTimeout(function(){combinado()}, 3000);
+
 }
 
-function master(){
-    const url_master = `https://pj-serverless-nschnitman.vercel.app/api/masterim/${taf_id}`;
+// Usar la misma funcion de hold para traer toda la data en un solo fetch y dentro de un for segun un switch case elegir 1 2 o 3 y mostrar la funcion actual. 
+function combinado(){
+    const url_master = `https://pj-serverless-nschnitman.vercel.app/api/hold/${user_id}`;
     fetch(url_master)
     .then((resp) => resp.json())
     .then(function(data) {
+        if (data == ''){
+            $('#div-general')
+                     .append('<div style="column-width: 33%;">')
+                     .append('<h4>אין תוצאות</h4>')
+                     .append('</div>')
+                document.getElementById('master-div').style.display = 'none';
+                document.getElementById('llaves-div').style.display = 'none';
+                document.getElementById('telefono-div').style.display = 'none';
+
+        }else{
         for (var i = 0; i < data.length; i++) {
-            $("#master-select")
-            .append('<option value="'+data[i].id + '">'+ data[i].name + '</option>');
-        }
+            switch(data[i].type) {
+                case "1":
+                    document.getElementById("check-master").value= data[i].id
+                    document.getElementById("check-master").disabled = false
+                    break;
+                case "2":
+                    document.getElementById("check-llaves").value= data[i].id
+                    document.getElementById("check-llaves").disabled= false
+                    break;
+                case "3": 
+                    document.getElementById("check-telefono").value= data[i].id
+                    document.getElementById("check-telefono").disabled= false
+                    break;
+                default:
+                    break;
+            }
+        }}
     })  
-}
-function telefon(){
-    const url_telefono = `https://pj-serverless-nschnitman.vercel.app/api/telefonos/${taf_id}`;
-    fetch(url_telefono)
-    .then((resp) => resp.json())
-    .then(function(data) {
-    if(data.length == 0){
-        $("#telefono-div")
-            .append('אין טלפון לתפקיד הזה')
-    }
-    else{
-        for (var i = 0; i < data.length; i++) {
-            $("#telefono-div")
-            .append('<div class="custom-control custom-radio"><input value="'+ data[i].id +'"type="radio" class="custom-control-input" id="TcustomControlValidation'+ i +'" name="Tradio-stacked" onclick="addT('+ i +')"><label class="custom-control-label" for="TcustomControlValidation'+ i +'">'+ data[i].name+ '</label></div>');
-        }
-    }})  
-}
-function llaves(){
-    const url_llaves = `https://pj-serverless-nschnitman.vercel.app/api/llaves/${taf_id}`;
-    fetch(url_llaves)
-    .then((resp) => resp.json())
-    .then(function(data) {
-    if(data.length == 0){
-        $("#llaves-div")
-            .append('אין מפתחות לתפקיד הזה')
-    }
-    else{
-        for (var i = 0; i < data.length; i++) {
-            $("#llaves-div")
-            .append('<div class="custom-control custom-radio"><input value="'+ data[i].id +'"type="radio" class="custom-control-input" id="LcustomControlValidation'+ i +'" name="Lradio-stacked" onclick="addL('+ i +')"><label class="custom-control-label" for="LcustomControlValidation'+ i +'">'+ data[i].name+ '</label></div>');
-        }
-    }})  
-    
 }
 
 function addM(){
-    var select = document.getElementById('master-select');
-    masterSeleccion = select.options[select.selectedIndex].value;
+    masterSeleccion = ''
+    masterSeleccion = document.getElementById('check-master').value
+    console.log(masterSeleccion)
 }
-function addT(i){
+function addT(){
     telefonoSeleccion = ''
-    telefonoSeleccion = document.getElementById('TcustomControlValidation'+i).value
+    telefonoSeleccion = document.getElementById('check-telefono').value
+    console.log(telefonoSeleccion)
 }
-function addL(i){
+function addL(){
     llaveSeleccion = ''
-    llaveSeleccion = document.getElementById('LcustomControlValidation'+i).value
+    llaveSeleccion = document.getElementById('check-llaves').value
+    console.log(llaveSeleccion)
 }
 
 
 function resultado(){
-//Escribir codigo para conseguir el elemento elegido de master llaves y telefnonos, mostarrlos en una lista y acomodarlos con css. mostar solo 3, y pasapor por apis individuales y probar que funcionen, sino cambiar el docio de sql para que acepte multiples lineas, 
+var SendMaster = false
+var SendLlaves =  false
+var SendTelefono = false
 addM() 
-//API -> Envio de datos al server. {Hold y Swaps}
+addL()
+addT()
+//API -> Envio de datos al server. {Elimina Hold y añade Swaps}
     //type: {1 Master, 2 Llaves, 3 Telefonos}
     const AddMaster = {
-        type: '1',
-        user_id: user_id,
-        item_id: masterSeleccion,
+        id: masterSeleccion,
     }
     const AddLlaves = {
-        type: '2',
-        user_id: user_id,
-        item_id: llaveSeleccion,
+        id: llaveSeleccion,
     }
     const AddTelefono = {
-        type: '3',
-        user_id: user_id,
-        item_id: telefonoSeleccion,
+        id: telefonoSeleccion,
     }
     const AddMaster2 = {
         type: '1',
         user_id: user_id,
         item_id: masterSeleccion,
-        flow: "IN",
+        flow: "OUT",
         signature: "Nico",
     }
     const AddLlaves2 = {
         type: '2',
         user_id: user_id,
         item_id: llaveSeleccion,
-        flow: "IN",
+        flow: "OUT",
         signature: "Nico",
     }
     const AddTelefono2 = {
         type: '3',
         user_id: user_id,
         item_id: telefonoSeleccion,
-        flow: "IN",
+        flow: "OUT",
         signature: "Nico",
     }
-    var SendMaster = document.getElementById("check-master").checked
-    var SendLlaves =  document.getElementById("check-llaves").checked
-    var SendTelefono = document.getElementById("check-telefono").checked
+    SendMaster = document.getElementById("check-master").checked
+    SendLlaves =  document.getElementById("check-llaves").checked
+    SendTelefono = document.getElementById("check-telefono").checked
     setTimeout(function() {
     if(SendMaster){
-    fetch('https://pj-serverless-nschnitman.vercel.app/api/hold', {
-    method: 'POST',
+    fetch('https://pj-serverless-nschnitman.vercel.app/api/hold/'+masterSeleccion, {
+    method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -587,8 +573,8 @@ addM()
     
     setTimeout(function() {
     if(SendLlaves){
-    fetch('https://pj-serverless-nschnitman.vercel.app/api/hold', {
-    method: 'POST',
+    fetch('https://pj-serverless-nschnitman.vercel.app/api/hold/'+llaveSeleccion, {
+    method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -606,8 +592,8 @@ addM()
 
     setTimeout(function() {
     if(SendTelefono){
-    fetch('https://pj-serverless-nschnitman.vercel.app/api/hold', {
-    method: 'POST',
+    fetch('https://pj-serverless-nschnitman.vercel.app/api/hold/'+telefonoSeleccion, {
+    method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -638,18 +624,6 @@ card.addEventListener("keyup", function(event) {
 })
 
 $(document).ready(function () {
-    //Master
-    $('#check-master').change(function () {
-      $('#master-div').fadeToggle();
-    });
-    // Telefono
-    $('#check-telefono').change(function () {
-      $('#telefono-div').fadeToggle();
-    });
-    //Llaves
-    $('#check-llaves').change(function () {
-      $('#llaves-div').fadeToggle();
-    });
 });
 
 </script>

@@ -6,12 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Web App for exchange of master keycard for employes">
+    <meta name="author" content="Nicolas Schnitman">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>Matrix Template - The Ultimate Multipurpose admin template</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <title>Pj-MasterKey - Users</title>
     <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
     <link href="dist/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -51,7 +56,7 @@
                         <b class="logo-icon p-l-10">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="assets/images/logo-icon.png" alt="homepage" class="light-logo" />
+                            <img src="assets/favicon/favicon-32x32.png" alt="homepage" class="light-logo" />
                            
                         </b>
                         <!--End Logo icon -->
@@ -287,7 +292,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Invoice</h4>
+                        <h4 class="page-title">Tables</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -310,97 +315,29 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="card card-body printableArea">
-                            <h3><b>INVOICE</b> <span class="pull-right">#5669626</span></h3>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="pull-left">
-                                        <address>
-                                            <h3> &nbsp;<b class="text-danger">Material Pro Admin</b></h3>
-                                            <p class="text-muted m-l-5">E 104, Dharti-2,
-                                                <br/> Nr' Viswakarma Temple,
-                                                <br/> Talaja Road,
-                                                <br/> Bhavnagar - 364002</p>
-                                        </address>
-                                    </div>
-                                    <div class="pull-right text-right">
-                                        <address>
-                                            <h3>To,</h3>
-                                            <h4 class="font-bold">Gaala & Sons,</h4>
-                                            <p class="text-muted m-l-30">E 104, Dharti-2,
-                                                <br/> Nr' Viswakarma Temple,
-                                                <br/> Talaja Road,
-                                                <br/> Bhavnagar - 364002</p>
-                                            <p class="m-t-30"><b>Invoice Date :</b> <i class="fa fa-calendar"></i> 23rd Jan 2018</p>
-                                            <p><b>Due Date :</b> <i class="fa fa-calendar"></i> 25th Jan 2018</p>
-                                        </address>
-                                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Basic Datatable</h5>
+                                <div class="table-responsive">
+                                    <table id="zero_config" class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Last Name</th>
+                                                <th>Telephone</th>
+                                                <th>Tafkid</th>
+                                                <th>Majlaka</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="table-responsive m-t-40" style="clear: both;">
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-center">#</th>
-                                                    <th>Description</th>
-                                                    <th class="text-right">Quantity</th>
-                                                    <th class="text-right">Unit Cost</th>
-                                                    <th class="text-right">Total</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="text-center">1</td>
-                                                    <td>Milk Powder</td>
-                                                    <td class="text-right">2 </td>
-                                                    <td class="text-right"> $24 </td>
-                                                    <td class="text-right"> $48 </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">2</td>
-                                                    <td>Air Conditioner</td>
-                                                    <td class="text-right"> 3 </td>
-                                                    <td class="text-right"> $500 </td>
-                                                    <td class="text-right"> $1500 </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">3</td>
-                                                    <td>RC Cars</td>
-                                                    <td class="text-right"> 20 </td>
-                                                    <td class="text-right"> %600 </td>
-                                                    <td class="text-right"> $12000 </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">4</td>
-                                                    <td>Down Coat</td>
-                                                    <td class="text-right"> 60 </td>
-                                                    <td class="text-right">$5 </td>
-                                                    <td class="text-right"> $300 </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="pull-right m-t-30 text-right">
-                                        <p>Sub - Total amount: $13,848</p>
-                                        <p>vat (10%) : $138 </p>
-                                        <hr>
-                                        <h3><b>Total :</b> $13,986</h3>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <hr>
-                                    <div class="text-right">
-                                        <button class="btn btn-danger" type="submit"> Proceed to payment </button>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -448,6 +385,30 @@
     <script src="dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="dist/js/custom.min.js"></script>
+    <!-- this page js -->
+    <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+    <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
+    <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+    <script>
+        /****************************************
+         *       Basic Table                   *
+         ****************************************/
+        $('#zero_config').DataTable( {
+            ajax: {
+              url: 'https://pj-serverless-nschnitman.vercel.app/api/users/view',
+             dataSrc: ''
+            },
+            columns: [ 
+                        { data: 'id' },
+                        { data: 'name' },
+                        { data: 'last_name' },
+                        { data: 'telefono' },
+                        { data: 'tafkid' },
+                        { data: 'majlaka' }
+                     ]
+        } );
+    </script>
+
 </body>
 
 </html>

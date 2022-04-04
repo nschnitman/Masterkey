@@ -101,9 +101,12 @@
     // ============================================================== 
     // Login
     // ============================================================== 
-    $('#to-login').click(function(){
-        $("#loginform").fadeIn();
-    });
+    var card_id = document.getElementById('card_id')
+    card_id.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+      console.log("enter pressed")
+    login() 
+    }})
 
     function login(){
         //data-toggle="modal" data-target="#Modal2"
@@ -112,31 +115,25 @@
         var userExists = 0;
         card_id = document.getElementById('card_id')
         const url = `https://pj-serverless-nschnitman.vercel.app/api/users/login/${card_id.value}`;
-            fetch(url)
-            .then((resp) => resp.json())
-            .then(function(data) {
-                return data.map(function(dat) {
-                    userExists = 1
-                var user_id = dat.id
-                localStorage.setItem('user_id', user_id)
-                var name = dat.name
-                localStorage.setItem('name', name)
-                var last_name = dat.last_name
-                localStorage.setItem('last_name', last_name)
-                })
-            })
-           setTimeout(function () {
-               if(userExists === 0){
-                alert("שם משתמש לא קיים")
-            }else{
-                top.location.href = "index.php"
-            }},500)
+        fetch(url)
+        .then((resp) => resp.json())
+        .then(function(data) {
+            userExists = 1
+            var user_id = data.id
+            localStorage.setItem('user_id', user_id)
+            var name = data.name
+            localStorage.setItem('name', name)
+            var last_name = data.last_name
+            localStorage.setItem('last_name', last_name)
+        })
+        setTimeout(function () {
+           if(userExists === 0){
+            alert("שם משתמש לא קיים")
+        }else{
+            top.location.href = "index.php"
+        }},2000)
+          
     }
-    card_id.addEventListener("keyup", function(event) {
-        if (event.keyCode === 13) {
-    login();
-  }
-})
 
     </script>
 

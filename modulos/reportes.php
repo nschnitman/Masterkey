@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html dir="rtl" lang="he">
 
 <head>
     <meta charset="utf-8"> <base href="../" />
@@ -10,7 +10,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
     <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
-    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link href="dist/css/style-rtl.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -170,6 +170,7 @@
               url: 'https://pj-serverless-nschnitman.vercel.app/api/reportes/iomi/'+ReportSelector,
              dataSrc: ''
             },
+            responsive: true,
             columns: [ 
                         { data: 'Hora IN' },
                         { data: 'item' },

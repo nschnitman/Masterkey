@@ -7,5 +7,7 @@ if (setupTime == null) {
     if(now-setupTime > hours*60*60*1000) {
         localStorage.clear()
         localStorage.setItem('setupTime', now);
+        top.href.location('login.php')
+        
     }
 }

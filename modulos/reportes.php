@@ -54,6 +54,13 @@
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-12">
+                       <div class="card">
+                       <div class="card-body">
+                       <h5 class="card-title">Select Report</h5>
+                            <button type="button" onclick="btnMaster()" id="master-button" class="btn btn-outline-secondary">Masterim</button>
+                            <button type="button" onclick="btnTelefono()" id="telefonos-button" class="btn btn-outline-secondary">Telefonos</button>
+                            <button type="button" onclick="btnLlaves"  id="llaves-button" class="btn btn-outline-secondary">Llaves</button>
+                       </div>
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Reporte Iomi</h5>
@@ -130,9 +137,26 @@
     <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
     <script>
         /****************************************
+         *       Report selector                *
+         ****************************************/
+        let ReportSelector
+        
+        function btnMaster(){
+            ReportSelector = "1"
+            DataTable.ajax.reload()
+        }
+        function btnTelefonos(){
+            ReportSelector = "2"
+            DataTable.ajax.reload()
+        }
+        function btnLlaves(){
+            ReportSelector = "3"
+            DataTable.ajax.reload()
+        }
+        
+        /****************************************
          *       Basic Table                   *
          ****************************************/
-        let ReportSelector = 1
         
         $('#zero_config').DataTable( {
             ajax: {

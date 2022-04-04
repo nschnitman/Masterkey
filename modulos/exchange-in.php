@@ -508,6 +508,7 @@ function llaves(){
 }
 
 function addM(){
+    masterSeleccion = ''
     var select = document.getElementById('master-select');
     masterSeleccion = select.options[select.selectedIndex].value;
 }
@@ -523,7 +524,7 @@ function addL(i){
 
 function resultado(){
 //Escribir codigo para conseguir el elemento elegido de master llaves y telefnonos, mostarrlos en una lista y acomodarlos con css. mostar solo 3, y pasapor por apis individuales y probar que funcionen, sino cambiar el docio de sql para que acepte multiples lineas, 
-addM() 
+//addM() 
 //API -> Envio de datos al server. {Hold y Swaps}
     //type: {1 Master, 2 Llaves, 3 Telefonos}
     const AddMaster = {
@@ -622,8 +623,8 @@ addM()
         body: JSON.stringify(AddTelefono2)
     }).then(respuesta => {
     })}}, 1500)
-    let ferrror = 0
-    if (ferror === 0){
+    let ferror = 0
+    if (ferror != 0){
     alert("Exchange exitoso")
     top.location.href = 'reportes.php'      
     }

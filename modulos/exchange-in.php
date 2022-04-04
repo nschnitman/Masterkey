@@ -583,7 +583,7 @@ addM()
         },
         body: JSON.stringify(AddMaster2)
     }).then(respuesta => {
-    })}},  500)
+    })}},  1500)
     
     setTimeout(function() {
     if(SendLlaves){
@@ -602,7 +602,7 @@ addM()
         },
         body: JSON.stringify(AddLlaves2)
     }).then(respuesta => {
-    })}},500)
+    })}},1500)
 
     setTimeout(function() {
     if(SendTelefono){
@@ -621,10 +621,13 @@ addM()
         },
         body: JSON.stringify(AddTelefono2)
     }).then(respuesta => {
-    })}}, 500)
-
-    //top.location.href = 'index.html'
-}
+    })}}, 1500)
+    let ferrror = 0
+    if (ferror === 0){
+    alert("Exchange exitoso")
+    top.location.href = 'reportes.php'      
+    }
+    }
 
 
 checkUser.addEventListener('click', () => {

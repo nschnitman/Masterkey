@@ -104,8 +104,8 @@
     $(function() {
     var card_id = document.getElementById('card_id')
     card_id.addEventListener("keyup", function(event) {
+    event.preventDefault()
     if (event.keyCode === 13) {
-      event.preventDefault()
       console.log("enter pressed")
       alert("enter pressed!")
       login() 

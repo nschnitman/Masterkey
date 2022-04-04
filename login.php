@@ -120,14 +120,15 @@
         fetch(url)
         .then((resp) => resp.json())
         .then(function(data) {
-            if (data != []){userExists = 1}
-            console.log()
-            var user_id = data.id
+            if (data.length != 1){userExists = 1 
+              console.log("Exist!!!!")}
+            
+            var user_id = data[0].id
             localStorage.setItem('user_id', user_id)
-            var name = data.name
-            console.log(name)
+            var name = data[0].name
+            console.log("name:" + name)
             localStorage.setItem('name', name)
-            var last_name = data.last_name
+            var last_name = data[0].last_name
             localStorage.setItem('last_name', last_name)
         })
         setTimeout(function () {

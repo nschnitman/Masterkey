@@ -101,16 +101,14 @@
     // ============================================================== 
     // Login
     // ============================================================== 
-    $(function() {
     var card_id = document.getElementById('card_id')
-    card_id.addEventListener("keyup", function(event) {
-    event.preventDefault()
-    if (event.keyCode === 13) {
+    card_id.addEventListener("keydown", function(event) {
+    if (event.keyCode == 13) {
+      event.preventDefault()
       console.log("enter pressed")
-      alert("enter pressed!")
+      //alert("enter pressed!")
       login() 
-    }})
-    });
+    }});
 
     function login(){
         //data-toggle="modal" data-target="#Modal2"
@@ -122,10 +120,12 @@
         fetch(url)
         .then((resp) => resp.json())
         .then(function(data) {
-            userExists = 1
+            if (data != []){userExists = 1}
+            console.log()
             var user_id = data.id
             localStorage.setItem('user_id', user_id)
             var name = data.name
+            console.log(name)
             localStorage.setItem('name', name)
             var last_name = data.last_name
             localStorage.setItem('last_name', last_name)

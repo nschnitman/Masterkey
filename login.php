@@ -120,7 +120,8 @@
         fetch(url)
         .then((resp) => resp.json())
         .then(function(data) {
-            if (data.length != 1){userExists = 1 
+          console.log(data.length)
+            if (data.length > 0){userExists = 1 
               console.log("Exist!!!!")}
             
             var user_id = data[0].id

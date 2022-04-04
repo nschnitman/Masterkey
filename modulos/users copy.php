@@ -1,5 +1,5 @@
 <?include("../header.php")?>
-    <title>Pj-MasterKey - Users</title>
+    <title>Pj-MasterKey - Reportes</title>
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
     <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
@@ -49,17 +49,18 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Basic Datatable</h5>
+                                <h5 class="card-title">Reporte Iomi</h5>
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
+                                                <th>Hora IN</th>
+                                                <th>Item</th>
                                                 <th>Name</th>
                                                 <th>Last Name</th>
-                                                <th>Telephone</th>
-                                                <th>Tafkid</th>
-                                                <th>Majlaka</th>
+                                                <th>Kabat</th>
+                                                <th>Hora OUT</th>
+                                                <th>Kabat</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -124,18 +125,21 @@
         /****************************************
          *       Basic Table                   *
          ****************************************/
+        let ReportSelector = 1
+        
         $('#zero_config').DataTable( {
             ajax: {
-              url: 'https://pj-serverless-nschnitman.vercel.app/api/users/view',
+              url: 'https://pj-serverless-nschnitman.vercel.app/api/reportes/'+ReportSelector,
              dataSrc: ''
             },
             columns: [ 
-                        { data: 'id' },
+                        { data: 'Hora IN' },
+                        { data: 'item' },
                         { data: 'name' },
                         { data: 'last_name' },
-                        { data: 'telefono' },
-                        { data: 'tafkid' },
-                        { data: 'majlaka' }
+                        { data: 'kabat1' },
+                        { data: 'Hora Out' },
+                        { data: 'kabat2' }
                      ]
         } );
     </script>

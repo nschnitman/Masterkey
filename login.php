@@ -104,8 +104,9 @@
     var card_id = document.getElementById('card_id')
     card_id.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
+      event.preventDefault()
       console.log("enter pressed")
-    login() 
+      login() 
     }})
 
     function login(){
@@ -127,14 +128,13 @@
             localStorage.setItem('last_name', last_name)
         })
         setTimeout(function () {
-           if(userExists === 0){
+          if(userExists === 0){
             alert("שם משתמש לא קיים")
-        }else{
-            top.location.href = "index.php"
-        }},2000)
-          
-    }
-
+          }else{
+                top.location.href = "index.php"
+          }
+        },2000)
+    };
     </script>
 
 </body>

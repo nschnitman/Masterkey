@@ -105,8 +105,6 @@
     card_id.addEventListener("keydown", function(event) {
     if (event.keyCode == 13) {
       event.preventDefault()
-      console.log("enter pressed")
-      //alert("enter pressed!")
       login() 
     }});
 
@@ -120,14 +118,10 @@
         fetch(url)
         .then((resp) => resp.json())
         .then(function(data) {
-          console.log(data.length)
-            if (data.length > 0){userExists = 1 
-              console.log("Exist!!!!")}
-            
+            if (data.length > 0){userExists = 1 }
             var user_id = data[0].id
             localStorage.setItem('user_id', user_id)
             var name = data[0].name
-            console.log("name:" + name)
             localStorage.setItem('name', name)
             var last_name = data[0].last_name
             localStorage.setItem('last_name', last_name)
@@ -136,7 +130,7 @@
           if(userExists === 0){
             alert("שם משתמש לא קיים")
           }else{
-                top.location.href = "index.php"
+            top.location.href = "index.php"
           }
         },2000)
     };

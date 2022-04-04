@@ -143,22 +143,22 @@
         
         function btnMaster(){
             ReportSelector = "1"
-            DataTable.ajax.reload()
+            Reporte.ajax.reload()
         }
         function btnTelefonos(){
             ReportSelector = "2"
-            DataTable.ajax.reload()
+            Reporte.ajax.reload()
         }
         function btnLlaves(){
             ReportSelector = "3"
-            DataTable.ajax.reload()
+            Reporte.ajax.reload()
         }
         
         /****************************************
          *       Basic Table                   *
          ****************************************/
         
-        $('#zero_config').DataTable( {
+        var Reporte = $('#zero_config').DataTable( {
             ajax: {
               url: 'https://pj-serverless-nschnitman.vercel.app/api/reportes/'+ReportSelector,
              dataSrc: ''

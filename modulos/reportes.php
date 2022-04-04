@@ -57,9 +57,9 @@
                        <div class="card">
                        <div class="card-body">
                        <h5 class="card-title">Select Report</h5>
-                            <button type="button" onclick="btnMaster()" id="master-button" class="btn btn-outline-secondary">Masterim</button>
-                            <button type="button" onclick="btnTelefono()" id="telefonos-button" class="btn btn-outline-secondary">Telefonos</button>
-                            <button type="button" onclick="btnLlaves"  id="llaves-button" class="btn btn-outline-secondary">Llaves</button>
+                            <button type="button" id="master-button" class="btn btn-outline-secondary">Masterim</button>
+                            <button type="button" id="telefonos-button" class="btn btn-outline-secondary">Telefonos</button>
+                            <button type="button" id="llaves-button" class="btn btn-outline-secondary">Llaves</button>
                        </div>
                         <div class="card">
                             <div class="card-body">
@@ -139,28 +139,35 @@
         /****************************************
          *       Report selector                *
          ****************************************/
-        let ReportSelector
+        let ReportSelector = "1"
+        document.getElementById("master-button").addEventListener("click", btnMaster);
+        document.getElementById("telefonos-button").addEventListener("click", btnTelefonos);
+        document.getElementById("llaves-button").addEventListener("click", btnLlaves);
+        
         
         function btnMaster(){
             ReportSelector = "1"
-            Reporte.ajax.reload()
+            console.log("Cambio a Master")
+           $('#zero_config').DataTable().ajax.url( 'https://pj-serverless-nschnitman.vercel.app/api/reportes/iomi/'+ReportSelector).load()
         }
         function btnTelefonos(){
-            ReportSelector = "2"
-            Reporte.ajax.reload()
+            ReportSelector = "3"
+            console.log("Cambio a Telefonos")
+            $('#zero_config').DataTable().ajax.url( 'https://pj-serverless-nschnitman.vercel.app/api/reportes/iomi/'+ReportSelector).load()
         }
         function btnLlaves(){
-            ReportSelector = "3"
-            Reporte.ajax.reload()
+            ReportSelector = "2"
+            console.log("Cambio a Llaves")
+            $('#zero_config').DataTable().ajax.url( 'https://pj-serverless-nschnitman.vercel.app/api/reportes/iomi/'+ReportSelector).load()
         }
         
         /****************************************
          *       Basic Table                   *
          ****************************************/
         
-        var Reporte = $('#zero_config').DataTable( {
+        $('#zero_config').DataTable( {
             ajax: {
-              url: 'https://pj-serverless-nschnitman.vercel.app/api/reportes/'+ReportSelector,
+              url: 'https://pj-serverless-nschnitman.vercel.app/api/reportes/iomi/'+ReportSelector,
              dataSrc: ''
             },
             columns: [ 

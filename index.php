@@ -418,9 +418,9 @@
                 var TotalUsers = data.TotalUsers
                 var ActiveUsers = data.ActiveUsers
             })  
-            var Masterim = (100 / Masterim_totales) * Masterim_rest
-            var Telefonos = (100 / Telefonos_totales) * Telefonos_rest
-            var Llaves = (100 / Llaves_totales) * Llaves_rest
+            var Masterim = (100 / Masterim_total) * Masterim_rest
+            var Telefonos = (100 / Telefonos_total) * Telefonos_rest
+            var Llaves = (100 / Llaves_total) * Llaves_rest
             var Users = (100 / TotalUsers) * ActiveUsers
             
             document.getElementById('MasterUse').innerHTML = Masterim_rest

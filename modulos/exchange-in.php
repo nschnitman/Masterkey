@@ -208,7 +208,7 @@ function exchange() {
         if(userExists ===0){
             document.getElementById("alerta-user").innerHTML = "שם משתמש לא קיים"
             if (confirm( "העובד לא רשום. אם אתה רוצה להירשם אותו?")){
-            top.location.href = "new-user.html"
+            top.location.href = "modulos/new-user.php"
             }
         }else{
             document.getElementById("alerta-user").innerHTML = "שם משתמש קיים"
@@ -379,8 +379,11 @@ function resultado(){
     }).then(respuesta => {
     })}}, 1500)
     
-    alert("Exchange exitoso")
-    top.location.href = 'reportes.php'      
+    setTimeout(function(){
+      alert("בוצע בהצלחה")
+      top.location.href = 'modulos/reportes.php'        
+    },3000)
+    
   }
 
 

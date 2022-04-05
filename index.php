@@ -409,19 +409,19 @@
             fetch(url_master)
             .then((resp) => resp.json())
             .then(function(data) {
-                Masterim_totales = data.Masterim_totales
-                Masterim_rest = data.Masterim_rest
-                Telefonos_totales = data.Telefonos_totales
-                Telefonos_rest = data.Telefonos_rest
-                Llaves_totales = data.Llaves_totales
-                Llaves_rest = data.Llaves_rest
-                TotalUsers = data.TotalUsers
-                ActiveUsers = data.ActiveUsers
+                var Masterim_totales = data.Masterim_totales
+                var Masterim_rest = data.Masterim_rest
+                var Telefonos_totales = data.Telefonos_totales
+                var Telefonos_rest = data.Telefonos_rest
+                var Llaves_totales = data.Llaves_totales
+                var Llaves_rest = data.Llaves_rest
+                var TotalUsers = data.TotalUsers
+                var ActiveUsers = data.ActiveUsers
             })  
             var Masterim = (100 / Masterim_totales) * Masterim_rest
             var Telefonos = (100 / Telefonos_totales) * Telefonos_rest
-            var Llaves = (100 / data.Llaves_totales) * data.Llaves_rest
-            var Users = (100 / data.TotalUsers) * data.ActiveUsers
+            var Llaves = (100 / Llaves_totales) * Llaves_rest
+            var Users = (100 / TotalUsers) * ActiveUsers
             
             document.getElementById('MasterUse').innerHTML = Masterim_rest
             document.getElementById('MasterTotal').innerHTML = Masterim_totales

@@ -4,6 +4,7 @@
     <link href="assets/libs/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet" />
     <link href="assets/extra-libs/calendar/calendar.css" rel="stylesheet" />
     <link href="dist/css/style.min.css" rel="stylesheet">
+    <link href="dist/css/custom.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -48,8 +49,8 @@
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card card-hover">
-                            <div class="box bg-cyan text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-view-dashboard"></i></h1>
+                            <div class="box bg-cyan text-center" data-toggle="modal" data-target="#Modal1">
+                                <h1 class="font-light text-white"><i class="mdi mdi-clipboard-outline"></i></h1>
                                 <h6 class="text-white">Exchange</h6>
                             </div>
                         </div>
@@ -57,17 +58,19 @@
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card card-hover">
+                            <a href="modulos/reportes.php">
                             <div class="box bg-success text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-chart-areaspline"></i></h1>
+                                <h1 class="font-light text-white"><i class="mdi mdi-file-multiple"></i></h1>
                                 <h6 class="text-white">Reports</h6>
                             </div>
+                            </a>
                         </div>
                     </div>
                      <!-- Column -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card card-hover">
                             <div class="box bg-warning text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-collage"></i></h1>
+                                <h1 class="font-light text-white"><i class="mdi mdi-archive"></i></h1>
                                 <h6 class="text-white">Avidot - soon</h6>
                             </div>
                         </div>
@@ -75,15 +78,18 @@
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card card-hover">
+                        <a href="modulos/reportes.php">
                             <div class="box bg-danger text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-border-outside"></i></h1>
+                                <h1 class="font-light text-white"><i class="mdi mdi-account-convert"></i></h1>
                                 <h6 class="text-white">Users</h6>
                             </div>
+                        </a>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
+                         <!-- Card  -- Latest exchanges-->
                          <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">החלפות אחרונות</h4>
@@ -91,49 +97,38 @@
                             <div class="comment-widgets scrollable">
                                 <!-- Comment Row -->
                                 <div class="d-flex flex-row comment-row m-t-0">
-                                    <div class="p-2"><img src="assets/images/users/1.jpg" alt="user" width="50" class="rounded-circle"></div>
+                                    <div class="p-2"><i class="fas fa-credit-card w-50px m-t-5"></i></div>
                                     <div class="comment-text w-100">
-                                        <h6 class="font-medium">James Anderson</h6>
-                                        <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
-                                        <div class="comment-footer">
-                                            <span class="text-muted float-right">April 14, 2016</span> 
-                                            <button type="button" class="btn btn-cyan btn-sm">Edit</button>
-                                            <button type="button" class="btn btn-success btn-sm">Publish</button>
-                                            <button type="button" class="btn btn-danger btn-sm">Delete</button>
-                                        </div>
+                                        <h6 class="font-medium float-left">James Anderson</h6>
+                                        <span class="text-muted float-right">April 14, 2016</span> 
+                                        <br/>
+                                        <span class="m-b-15 d-block float-left">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
+                                
                                     </div>
                                 </div>
                                 <!-- Comment Row -->
-                                <div class="d-flex flex-row comment-row">
-                                    <div class="p-2"><img src="assets/images/users/4.jpg" alt="user" width="50" class="rounded-circle"></div>
-                                    <div class="comment-text active w-100">
-                                        <h6 class="font-medium">Michael Jorden</h6>
-                                        <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
-                                        <div class="comment-footer">
-                                            <span class="text-muted float-right">May 10, 2016</span> 
-                                            <button type="button" class="btn btn-cyan btn-sm">Edit</button>
-                                            <button type="button" class="btn btn-success btn-sm">Publish</button>
-                                            <button type="button" class="btn btn-danger btn-sm">Delete</button>
-                                        </div>
+                                <div class="d-flex flex-row comment-row m-t-0">
+                                    <div class="p-2"><i class="fas fa-key w-50px m-t-5"></i></div>
+                                    <div class="comment-text w-100">
+                                        <h6 class="font-medium float-left">Felipe Montenegro</h6>
+                                        <span class="text-muted float-right">May 15, 2016</span> 
+                                        <br/>
+                                        <span class="m-b-15 d-block float-left">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
                                     </div>
                                 </div>
                                 <!-- Comment Row -->
-                                <div class="d-flex flex-row comment-row">
-                                    <div class="p-2"><img src="assets/images/users/5.jpg" alt="user" width="50" class="rounded-circle"></div>
+                                <div class="d-flex flex-row comment-row m-t-0">
+                                    <div class="p-2"><i class="fas fa-mobile-alt w-50px m-t-5"></i></div>
                                     <div class="comment-text w-100">
-                                        <h6 class="font-medium">Johnathan Doeting</h6>
-                                        <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
-                                        <div class="comment-footer">
-                                            <span class="text-muted float-right">August 1, 2016</span> 
-                                            <button type="button" class="btn btn-cyan btn-sm">Edit</button>
-                                            <button type="button" class="btn btn-success btn-sm">Publish</button>
-                                            <button type="button" class="btn btn-danger btn-sm">Delete</button>
-                                        </div>
+                                        <h6 class="font-medium float-left">Agustin Rivera</h6>
+                                        <span class="text-muted float-right">July 04, 2016</span> 
+                                        <br/>
+                                        <span class="m-b-15 d-block float-left">Lorem Ipsum is simply dummy text of the printing and type setting industry. </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                         <!-- Card -->
+                         <!-- Card -- mesimot-->
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">משימות</h4>
@@ -201,7 +196,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                         <!-- card -->
+                         <!-- card -- progress box -->
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title m-b-0">Progress Box</h4>
@@ -246,12 +241,12 @@
                                         </div>
                                     </div>
                                     <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 3%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 20%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- card new -->
+                        <!-- card new -- avidot-->
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title m-b-0">אבידות אחרונות</h4>
@@ -271,7 +266,7 @@
                                     </div>
                                 </li>
                                 <li class="d-flex no-block card-body border-top">
-                                    <i class="fa fa-gift w-30px m-t-5"></i>
+                                    <i class="fas fa-credit-card w-30px m-t-5"></i>
                                     <div>
                                         <a href="#" class="m-b-0 font-medium p-0">Congratulation Maruti, Happy Birthday</a>
                                         <span class="text-muted">many many happy returns of the day</span>
@@ -352,6 +347,32 @@
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true ">
+        <div class="modal-dialog" role="document ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Exchange</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true ">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body frow">
+                    <div class="col col2">
+                        <a href="modulos/exchange-in.php" style="padding-left: 30%;">
+                            <h2 class="badge badge-pill badge-success">Exchange IN</h2>
+                        </a>
+                    </div>
+                    <div class="col col2">
+                        <a href="modulos/exchange-out.php" style="padding-left: 30%;">
+                            <h2 class="badge badge-pill badge-danger">Exchange OUT</h2>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     <!-- ============================================================== -->

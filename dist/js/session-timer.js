@@ -1,4 +1,4 @@
-var hours = 0.1; 
+var hours = 0.5; 
 var now = new Date().getTime();
 var setupTime = localStorage.getItem('setupTime');
 if (setupTime == null) {

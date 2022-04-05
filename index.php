@@ -404,19 +404,29 @@
             progress();
         });
         
+        var Masterim_total
+        var Masterim_rest 
+        var Telefonos_total
+        var Telefonos_rest 
+        var Llaves_total
+        var Llaves_rest 
+        var TotalUsers 
+        var ActiveUsers
+        
+        
         function progress(){
             const url_master = `https://pj-serverless-nschnitman.vercel.app/api/reportes/progress`;
             fetch(url_master)
             .then((resp) => resp.json())
             .then(function(data) {
-                var Masterim_totales = data.Masterim_total
-                var Masterim_rest = data.Masterim_rest
-                var Telefonos_totales = data.Telefonos_total
-                var Telefonos_rest = data.Telefonos_rest
-                var Llaves_totales = data.Llaves_total
-                var Llaves_rest = data.Llaves_rest
-                var TotalUsers = data.TotalUsers
-                var ActiveUsers = data.ActiveUsers
+                 Masterim_total = data.Masterim_total
+                 Masterim_rest = data.Masterim_rest
+                 Telefonos_total = data.Telefonos_total
+                 Telefonos_rest = data.Telefonos_rest
+                 Llaves_total = data.Llaves_total
+                 Llaves_rest = data.Llaves_rest
+                 TotalUsers = data.TotalUsers
+                 ActiveUsers = data.ActiveUsers
             })  
             var Masterim = (100 / Masterim_total) * Masterim_rest
             var Telefonos = (100 / Telefonos_total) * Telefonos_rest
@@ -424,11 +434,11 @@
             var Users = (100 / TotalUsers) * ActiveUsers
             
             document.getElementById('MasterUse').innerHTML = Masterim_rest
-            document.getElementById('MasterTotal').innerHTML = Masterim_totales
+            document.getElementById('MasterTotal').innerHTML = Masterim_total
             document.getElementById('TelefonoUse').innerHTML = Telefonos_rest
-            document.getElementById('TelefonoTotal').innerHTML = Telefonos_totales
+            document.getElementById('TelefonoTotal').innerHTML = Telefonos_total
             document.getElementById('LlavesUse').innerHTML = Llaves_rest
-            document.getElementById('LlavesTotal').innerHTML = Llaves_totales
+            document.getElementById('LlavesTotal').innerHTML = Llaves_total
             document.getElementById('TotalUsers').innerHTML = TotalUsers
             document.getElementById('ActiveUsers').innerHTML = ActiveUsers
         

@@ -202,9 +202,9 @@
                                 <h4 class="card-title m-b-0">Progress Box</h4>
                                 <div class="m-t-20">
                                     <div class="d-flex no-block align-items-center">
-                                        <span>81% Clicks</span>
+                                        <span id="MasterUse"></span>
                                         <div class="ml-auto">
-                                            <span>125</span>
+                                            <span id="MasterTotal"></span>
                                         </div>
                                     </div>
                                     <div class="progress">
@@ -213,9 +213,9 @@
                                 </div>
                                 <div>
                                     <div class="d-flex no-block align-items-center m-t-25">
-                                        <span>72% Uniquie Clicks</span>
+                                        <span id="TelefonoUse"></span>
                                         <div class="ml-auto">
-                                            <span>120</span>
+                                            <span id="TelefonoTotal"></span>
                                         </div>
                                     </div>
                                     <div class="progress">
@@ -224,9 +224,9 @@
                                 </div>
                                 <div>
                                     <div class="d-flex no-block align-items-center m-t-25">
-                                        <span>53% Impressions</span>
+                                        <span id="LlavesUse"></span>
                                         <div class="ml-auto">
-                                            <span>785</span>
+                                            <span id="LlavesTotal"></span>
                                         </div>
                                     </div>
                                     <div class="progress">
@@ -235,9 +235,9 @@
                                 </div>
                                 <div>
                                     <div class="d-flex no-block align-items-center m-t-25">
-                                        <span>3% Online Users</span>
+                                        <span id="ActiveUsers"></span>
                                         <div class="ml-auto">
-                                            <span>8</span>
+                                            <span id="TotalUsers"></span>
                                         </div>
                                     </div>
                                     <div class="progress">
@@ -402,6 +402,37 @@
             user_id = localStorage.getItem('user_id');
             sessionActive();
         });
+        
+        function progress(){
+            const url_master = `https://pj-serverless-nschnitman.vercel.app/api/reportes/progress`;
+            fetch(url_master)
+            .then((resp) => resp.json())
+            .then(function(data) {
+                Masterim_totales = data.Masterim_totales
+                Masterim_rest = data.Masterim_rest
+                Telefonos_totales = data.Telefonos_totales
+                Telefonos_rest = data.Telefonos_rest
+                Llaves_totales = data.Llaves_totales
+                Llaves_rest = data.Llaves_rest
+                TotalUsers = data.TotalUsers
+                ActiveUsers = data.ActiveUsers
+            })  
+            var Masterim = (100 / Masterim_totales) * Masterim_rest
+            var Telefonos = (100 / Telefonos_totales) * Telefonos_rest
+            var Llaves = (100 / data.Llaves_totales) * data.Llaves_rest
+            var Users = (100 / data.TotalUsers) * data.ActiveUsers)
+            
+            document.getElementById('MasterUse').innerHTML = Masterim_rest
+            document.getElementById('MasterTotal').innerHTML = Masterim_totales
+            document.getElementById('TelefonoUse').innerHTML = Telefonos_rest
+            document.getElementById('TelefonoTotal').innerHTML = Telefonos_totales
+            document.getElementById('LlavesUse').innerHTML = Llaves_rest
+            document.getElementById('LlavesTotal').innerHTML = Llaves_totales
+            document.getElementById('TotalUsers').innerHTML = TotalUsers
+            document.getElementById('ActiveUsers').innerHTML = ActiveUsers
+        
+        }
+        
             
 
     </script>

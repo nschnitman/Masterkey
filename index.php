@@ -409,11 +409,11 @@
             fetch(url_master)
             .then((resp) => resp.json())
             .then(function(data) {
-                var Masterim_totales = data.Masterim_totales
+                var Masterim_totales = data.Masterim_total
                 var Masterim_rest = data.Masterim_rest
-                var Telefonos_totales = data.Telefonos_totales
+                var Telefonos_totales = data.Telefonos_total
                 var Telefonos_rest = data.Telefonos_rest
-                var Llaves_totales = data.Llaves_totales
+                var Llaves_totales = data.Llaves_total
                 var Llaves_rest = data.Llaves_rest
                 var TotalUsers = data.TotalUsers
                 var ActiveUsers = data.ActiveUsers

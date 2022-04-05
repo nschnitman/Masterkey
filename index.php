@@ -427,7 +427,6 @@
                  Llaves_rest = data[0].Llaves_rest
                  TotalUsers = data[0].TotalUsers
                  ActiveUsers = data[0].ActiveUsers
-                 alert("1: " +Masterim_total);
             })  
             setTimeout(function() {
                 let Masterim = (100 / Masterim_total) * Masterim_rest

@@ -420,7 +420,7 @@
             var Masterim = (100 / Masterim_totales) * Masterim_rest
             var Telefonos = (100 / Telefonos_totales) * Telefonos_rest
             var Llaves = (100 / data.Llaves_totales) * data.Llaves_rest
-            var Users = (100 / data.TotalUsers) * data.ActiveUsers)
+            var Users = (100 / data.TotalUsers) * data.ActiveUsers
             
             document.getElementById('MasterUse').innerHTML = Masterim_rest
             document.getElementById('MasterTotal').innerHTML = Masterim_totales

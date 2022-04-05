@@ -61,6 +61,7 @@ if ($uploadOk == 0) {
 	
 	if ($conn->query($sql) === TRUE) {
 	  echo "New record created successfully";
+	  echo " setTimeoout(() => {top.location.href = 'extra.html},1000)';\n";
 	} else {
 	  echo "Error: " . $sql . "<br>" . $conn->error;
 	}

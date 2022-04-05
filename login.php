@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr">
+<html dir="rtl">
 
 <head>
     <meta charset="utf-8">

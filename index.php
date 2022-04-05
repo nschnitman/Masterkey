@@ -358,12 +358,12 @@
                 </div>
                 <div class="modal-body frow">
                     <div class="col col2">
-                        <a href="modulos/exchange-in.php" style="padding-left: 30%;">
+                        <a href="modulos/exchange-in.php" style="padding-right: 30%;">
                             <h2 class="badge badge-pill badge-success">חילוף כניסה</h2>
                         </a>
                     </div>
                     <div class="col col2">
-                        <a href="modulos/exchange-out.php" style="padding-left: 30%;">
+                        <a href="modulos/exchange-out.php" style="padding-right: 30%;">
                             <h2 class="badge badge-pill badge-danger">חילוף יציאה</h2>
                         </a>
                     </div>
@@ -433,11 +433,11 @@
                 let Llaves = (100 / Llaves_total) * Llaves_rest
                 let Users = (100 / TotalUsers) * ActiveUsers
                 
-                document.getElementById('MasterUse').innerHTML = "מאסטרים בשטח: " + Masterim_rest
+                document.getElementById('MasterUse').innerHTML = "מאסטרים בטיים קיפר: " + Masterim_rest
                 document.getElementById('MasterTotal').innerHTML = Masterim_total
-                document.getElementById('TelefonoUse').innerHTML = "טלפונים בשטח: " + Telefonos_rest
+                document.getElementById('TelefonoUse').innerHTML = "טלפונים בטיים קיפר: " + Telefonos_rest
                 document.getElementById('TelefonoTotal').innerHTML = Telefonos_total
-                document.getElementById('LlavesUse').innerHTML = "מפתחות בשטח: " + Llaves_rest
+                document.getElementById('LlavesUse').innerHTML = "מפתחות בטיים קיפר: " + Llaves_rest
                 document.getElementById('LlavesTotal').innerHTML = Llaves_total
                 document.getElementById('TotalUsers').innerHTML = TotalUsers
                 document.getElementById('ActiveUsers').innerHTML = "עובדים בשטח: " + ActiveUsers

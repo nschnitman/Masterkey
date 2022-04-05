@@ -25,6 +25,11 @@
 .frow .col2 {
   width: 49%;
   
+.contact_dir_reverse {
+      direction: ltr;
+      unicode-bidi: embed;
+  }
+
 
 
 @media only screen and (max-width: 480px) {

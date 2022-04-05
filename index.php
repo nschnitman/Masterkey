@@ -208,7 +208,7 @@
                                         </div>
                                     </div>
                                     <div class="progress">
-                                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 81%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div id="master-bar"class="progress-bar progress-bar-striped" role="progressbar" style="width: 81%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                                 <div>
@@ -219,7 +219,7 @@
                                         </div>
                                     </div>
                                     <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 72%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div id="telefono-bar" class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 72%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                                 <div>
@@ -230,7 +230,7 @@
                                         </div>
                                     </div>
                                     <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 53%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div id="llave-bar" class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 53%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                                 <div>
@@ -241,7 +241,7 @@
                                         </div>
                                     </div>
                                     <div class="progress">
-                                        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 20%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div id="user-bar" class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 20%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
@@ -419,28 +419,37 @@
             fetch(url_master)
             .then((resp) => resp.json())
             .then(function(data) {
-                 Masterim_total = data.Masterim_total
-                 Masterim_rest = data.Masterim_rest
-                 Telefonos_total = data.Telefonos_total
-                 Telefonos_rest = data.Telefonos_rest
-                 Llaves_total = data.Llaves_total
-                 Llaves_rest = data.Llaves_rest
-                 TotalUsers = data.TotalUsers
-                 ActiveUsers = data.ActiveUsers
+                 Masterim_total = data[0].Masterim_total
+                 Masterim_rest = data[0].Masterim_rest
+                 Telefonos_total = data[0].Telefonos_total
+                 Telefonos_rest = data[0].Telefonos_rest
+                 Llaves_total = data[0].Llaves_total
+                 Llaves_rest = data[0].Llaves_rest
+                 TotalUsers = data[0].TotalUsers
+                 ActiveUsers = data[0].ActiveUsers
+                 alert("1: " +Masterim_total);
             })  
-            var Masterim = (100 / Masterim_total) * Masterim_rest
-            var Telefonos = (100 / Telefonos_total) * Telefonos_rest
-            var Llaves = (100 / Llaves_total) * Llaves_rest
-            var Users = (100 / TotalUsers) * ActiveUsers
-            
-            document.getElementById('MasterUse').innerHTML = Masterim_rest
-            document.getElementById('MasterTotal').innerHTML = Masterim_total
-            document.getElementById('TelefonoUse').innerHTML = Telefonos_rest
-            document.getElementById('TelefonoTotal').innerHTML = Telefonos_total
-            document.getElementById('LlavesUse').innerHTML = Llaves_rest
-            document.getElementById('LlavesTotal').innerHTML = Llaves_total
-            document.getElementById('TotalUsers').innerHTML = TotalUsers
-            document.getElementById('ActiveUsers').innerHTML = ActiveUsers
+            setTimeout(function() {
+                let Masterim = (100 / Masterim_total) * Masterim_rest
+                let Telefonos = (100 / Telefonos_total) * Telefonos_rest
+                let Llaves = (100 / Llaves_total) * Llaves_rest
+                let Users = (100 / TotalUsers) * ActiveUsers
+                
+                document.getElementById('MasterUse').innerHTML = "מאסטרים בשטח: " + Masterim_rest
+                document.getElementById('MasterTotal').innerHTML = Masterim_total
+                document.getElementById('TelefonoUse').innerHTML = "טלפונים בשטח: " + Telefonos_rest
+                document.getElementById('TelefonoTotal').innerHTML = Telefonos_total
+                document.getElementById('LlavesUse').innerHTML = "מפתחות בשטח: " + Llaves_rest
+                document.getElementById('LlavesTotal').innerHTML = Llaves_total
+                document.getElementById('TotalUsers').innerHTML = TotalUsers
+                document.getElementById('ActiveUsers').innerHTML = "עובדים בשטח: " + ActiveUsers
+                
+                $('#master-bar').attr('aria-valuenow', Masterim).css('width', Masterim+'%');
+                $('#telefono-bar').attr('aria-valuenow', Telefonos).css('width', Telefonos+'%');
+                $('#llave-bar').attr('aria-valuenow', Llaves).css('width', Llaves+'%');
+                $('#user-bar').attr('aria-valuenow', Users).css('width', Users+'%');
+            },1000)
+           
         
         }
         

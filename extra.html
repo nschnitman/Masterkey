@@ -15,36 +15,25 @@
 	<link rel="manifest" href="assets/favicon/site.webmanifest">
 	<title>Pj-MasterKey - Extra - Tz Upload</title>
 	<!-- Custom CSS -->
-	<link href="assets/libs/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet" />
-	<link href="assets/extra-libs/calendar/calendar.css" rel="stylesheet" />
-	<link href="dist/css/style.min.css" rel="stylesheet">
-	<link href="dist/css/custom.css" rel="stylesheet">
+	<link href="dist/css/extra.css" rel="stylesheet">
 </head>
 <body>
-<span>מספר תעודת זהות</span>
-<input type="text" id="tz" placeholder="תקלית מספר ת.ז"/>
-<input id="fileupload" type="file" name="fileupload" />
-<button id="upload-button" onclick="uploadFile()"> Upload </button>
-	
-
-<!-- ============================================================== -->
-<!-- All Jquery -->
-<!-- ============================================================== -->
-<script src="assets/libs/jquery/dist/jquery.min.js"></script>
-<script src="dist/js/jquery.ui.touch-punch-improved.js"></script>
-<script src="dist/js/jquery-ui.min.js"></script>
-
-
-<script>
-async function uploadFile() {
-	let formData = new FormData();           
-	formData.append("file", fileupload.files[0]);
-	await fetch('/upload.php', {
-	  method: "POST", 
-	  body: formData
-	});    
-	alert('The file has been uploaded successfully.');
-}
-</script>	
+	<div id="main">
+			<span>מספר תעודת זהות</span>
+			<br>
+		<form action="upload.php" method="POST" enctype="multipart/form-data">
+			<input id="tz" name="tz" type="text" pattern="[0-9]*" inputmode="numeric" placeholder="תקלית מספר ת.ז"/>
+			<br>
+			<input id="fileToUpload" type="file" name="fileToUpload" />
+			<br>
+			<button type="submit" id="upload-button"> Upload </button>
+		</form>
+	</div>
+	<!-- ============================================================== -->
+	<!-- All Jquery -->
+	<!-- ============================================================== -->
+	<script src="assets/libs/jquery/dist/jquery.min.js"></script>
+	<script src="dist/js/jquery.ui.touch-punch-improved.js"></script>
+	<script src="dist/js/jquery-ui.min.js"></script>
 </body>
 </html>

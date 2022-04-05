@@ -4,7 +4,7 @@
     <!-- Custom CSS -->
     <link href="assets/libs/jquery-steps/jquery.steps.css" rel="stylesheet">
     <link href="assets/libs/jquery-steps/steps.css" rel="stylesheet">
-    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link href="dist/css/style-rtl.min.css" rel="stylesheet">
 
 </head>
 <? include('../menu.php')?>

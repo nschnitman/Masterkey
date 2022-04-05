@@ -401,6 +401,7 @@
         $( document ).ready(function() {
             user_id = localStorage.getItem('user_id');
             sessionActive();
+            progress();
         });
         
         function progress(){

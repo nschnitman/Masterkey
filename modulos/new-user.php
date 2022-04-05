@@ -1,6 +1,6 @@
 <? include('../header.php')?>
 <base href="../" />
-    <title>New User - Add</title>
+    <title>Pj-MasterKey - New User</title>
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="assets/libs/select2/dist/css/select2.min.css">
     <link rel="stylesheet" type="text/css" href="assets/libs/jquery-minicolors/jquery.minicolors.css">

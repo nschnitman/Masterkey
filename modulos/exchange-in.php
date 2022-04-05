@@ -19,7 +19,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">דף הבית</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">טיים קיפר</li>
+                                    <li class="breadcrumb-item active" aria-current="page">חילוק</li>
                                 </ol>
                             </nav>
                         </div>

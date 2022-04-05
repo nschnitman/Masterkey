@@ -23,12 +23,11 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Dashboard</h4>
+                        <h4 class="page-title">לוח מחוונים</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                    <li class="breadcrumb-item"><a href="#">דף הבית</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -51,7 +50,7 @@
                         <div class="card card-hover">
                             <div class="box bg-cyan text-center" data-toggle="modal" data-target="#Modal1">
                                 <h1 class="font-light text-white"><i class="mdi mdi-clipboard-outline"></i></h1>
-                                <h6 class="text-white">Exchange</h6>
+                                <h6 class="text-white">חילוף</h6>
                             </div>
                         </div>
                     </div>
@@ -61,7 +60,7 @@
                             <a href="modulos/reportes.php">
                             <div class="box bg-success text-center">
                                 <h1 class="font-light text-white"><i class="mdi mdi-file-multiple"></i></h1>
-                                <h6 class="text-white">Reports</h6>
+                                <h6 class="text-white">דוחות</h6>
                             </div>
                             </a>
                         </div>
@@ -71,17 +70,17 @@
                         <div class="card card-hover">
                             <div class="box bg-warning text-center">
                                 <h1 class="font-light text-white"><i class="mdi mdi-archive"></i></h1>
-                                <h6 class="text-white">Avidot - soon</h6>
+                                <h6 class="text-white">אבידות</h6>
                             </div>
                         </div>
                     </div>
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card card-hover">
-                        <a href="modulos/reportes.php">
+                        <a href="modulos/users.php">
                             <div class="box bg-danger text-center">
                                 <h1 class="font-light text-white"><i class="mdi mdi-account-convert"></i></h1>
-                                <h6 class="text-white">Users</h6>
+                                <h6 class="text-white">עובדים</h6>
                             </div>
                         </a>
                         </div>
@@ -199,7 +198,7 @@
                          <!-- card -- progress box -->
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title m-b-0">Progress Box</h4>
+                                <h4 class="card-title m-b-0">התקדמות בשטח</h4>
                                 <div class="m-t-20">
                                     <div class="d-flex no-block align-items-center">
                                         <span id="MasterUse"></span>
@@ -352,7 +351,7 @@
         <div class="modal-dialog" role="document ">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Exchange</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">חילוף</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true ">&times;</span>
                     </button>
@@ -360,12 +359,12 @@
                 <div class="modal-body frow">
                     <div class="col col2">
                         <a href="modulos/exchange-in.php" style="padding-left: 30%;">
-                            <h2 class="badge badge-pill badge-success">Exchange IN</h2>
+                            <h2 class="badge badge-pill badge-success">חילוף כניסה</h2>
                         </a>
                     </div>
                     <div class="col col2">
                         <a href="modulos/exchange-out.php" style="padding-left: 30%;">
-                            <h2 class="badge badge-pill badge-danger">Exchange OUT</h2>
+                            <h2 class="badge badge-pill badge-danger">חילוף יציאה</h2>
                         </a>
                     </div>
                 </div>

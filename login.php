@@ -47,7 +47,7 @@
                 <div id="loginform">
                     <div class="text-center p-t-20 p-b-20">
                         <span class="db"><img src="assets/images/keycard.png" height="150px" alt="logo" /></span>
-                        <h3 class="login-text">Pj-MasterKey / WepAPP</h3>
+                        <h3 class="login-text" style="white-space: pre">Pj-MasterKey - מערכת טיים קיפר</h3>
                     </div>
                     <!-- Form -->
                     <form class="form-horizontal m-t-20" id="loginform">
@@ -58,7 +58,7 @@
                                         <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
                                     <input type="text" id="card_id" class="form-control form-control-lg" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required="">
-                                    <button class="btn-lg btn-success" type="button" style="margin-left: 20px;" onclick="login()">Login</button>
+                                    <button class="btn-lg btn-success" type="button" style="margin-right: 20px;" onclick="login()">כניסה</button>
                                 </div>
                             </div>
                         </div>

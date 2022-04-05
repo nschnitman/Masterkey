@@ -1,4 +1,5 @@
 <?include("../header.php")?>
+<base href="../" />
     <title>Pj-MasterKey - Users</title>
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">

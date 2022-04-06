@@ -296,6 +296,7 @@ function addM(){
 function addT(i){
     telefonoSeleccion = ''
     telefonoSeleccion = document.getElementById('TcustomControlValidation'+i).value
+    alert(telefonoSeleccion)
 }
 function addL(i){
     llaveSeleccion = ''

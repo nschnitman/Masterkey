@@ -192,7 +192,7 @@ const checkUser = document.getElementById('checkUser');
 let userExists = 0;
 
 function exchange() {
-    const url = `https://pj-serverless-nschnitman.vercel.app/api/users/card/${card.value}`;
+    const url = `https://pj-serverless.vercel.app/api/users/card/${card.value}`;
     fetch(url)
     .then((resp) => resp.json())
     .then(function(data) {
@@ -226,7 +226,7 @@ var masterSeleccionado
 var masterFlag = 1
 function master(){
     if (masterFlag == 1){
-    const url_master = `https://pj-serverless-nschnitman.vercel.app/api/masterim/${taf_id}`;
+    const url_master = `https://pj-serverless.vercel.app/api/masterim/${taf_id}`;
     fetch(url_master)
     .then((resp) => resp.json())
     .then(function(data) {
@@ -242,7 +242,7 @@ var telefonoSeleccionado
 var telefonFlag = 1
 function telefon(){
     if (telefonFlag == 1){
-    const url_telefono = `https://pj-serverless-nschnitman.vercel.app/api/telefonos/${taf_id}`;
+    const url_telefono = `https://pj-serverless.vercel.app/api/telefonos/${taf_id}`;
     fetch(url_telefono)
     .then((resp) => resp.json())
     .then(function(data) {
@@ -264,7 +264,7 @@ var llavesSeleccionadas
 var llavesFlag = 1
 function llaves(){
     if (llavesFlag == 1){
-    const url_llaves = `https://pj-serverless-nschnitman.vercel.app/api/llaves/${taf_id}`;
+    const url_llaves = `https://pj-serverless.vercel.app/api/llaves/${taf_id}`;
     fetch(url_llaves)
     .then((resp) => resp.json())
     .then(function(data) {
@@ -304,7 +304,7 @@ function addL(i){
 }
 
 function preValidacion() {
-  document.getElementById("pre-validacion").innerHTML =  "העובד " + fname + " " + last_name + " "+ "לוקח את הדברים הבאים: " + "<br />"
+  document.getElementById("pre-validacion").innerHTML =  "העובד " + "<strong>" + fname + " " + last_name + "</strong> " + "לוקח את הדברים הבאים: " + "<br />"
   alert("Pre-Validacion - CheckBox Master: " + document.getElementById("check-master").checked)
   alert("Pre-Validacion - MasterSeleccionado: " + masterSeleccionado)
   if(document.getElementById("check-master").checked){
@@ -365,7 +365,7 @@ function resultado(){
     var SendTelefono = document.getElementById("check-telefono").checked
     setTimeout(function() {
     if(SendMaster){
-    fetch('https://pj-serverless-nschnitman.vercel.app/api/hold', {
+    fetch('https://pj-serverless.vercel.app/api/hold', {
     method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -374,7 +374,7 @@ function resultado(){
     }).then(respuesta => {
     })
     console.log(AddMaster2)
-    fetch('https://pj-serverless-nschnitman.vercel.app/api/swaps', {
+    fetch('https://pj-serverless.vercel.app/api/swaps', {
     method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -385,7 +385,7 @@ function resultado(){
     
     setTimeout(function() {
     if(SendLlaves){
-    fetch('https://pj-serverless-nschnitman.vercel.app/api/hold', {
+    fetch('https://pj-serverless.vercel.app/api/hold', {
     method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -393,7 +393,7 @@ function resultado(){
         body: JSON.stringify(AddLlaves)
     }).then(respuesta => {
     })
-    fetch('https://pj-serverless-nschnitman.vercel.app/api/swaps', {
+    fetch('https://pj-serverless.vercel.app/api/swaps', {
     method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -404,7 +404,7 @@ function resultado(){
 
     setTimeout(function() {
     if(SendTelefono){
-    fetch('https://pj-serverless-nschnitman.vercel.app/api/hold', {
+    fetch('https://pj-serverless.vercel.app/api/hold', {
     method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -412,7 +412,7 @@ function resultado(){
         body: JSON.stringify(AddTelefono)
     }).then(respuesta => {
     })
-    fetch('https://pj-serverless-nschnitman.vercel.app/api/swaps', {
+    fetch('https://pj-serverless.vercel.app/api/swaps', {
     method: 'POST',
         headers: {
             'Content-Type': 'application/json'

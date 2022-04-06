@@ -414,7 +414,7 @@
         
         
         function progress(){
-            const url_master = `https://pj-serverless-nschnitman.vercel.app/api/reportes/progress`;
+            const url_master = `https://pj-serverless.vercel.app/api/reportes/progress`;
             fetch(url_master)
             .then((resp) => resp.json())
             .then(function(data) {

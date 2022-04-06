@@ -111,10 +111,10 @@
     function login(){
         //data-toggle="modal" data-target="#Modal2"
         //Chequear si el usuario existe y es de bitajon. Sino rechazar
-        //https://pj-serverless-nschnitman.vercel.app/api/users/login/
+        //https://pj-serverless.vercel.app/api/users/login/
         var userExists = 0;
         card_id = document.getElementById('card_id')
-        const url = `https://pj-serverless-nschnitman.vercel.app/api/users/login/${card_id.value}`;
+        const url = `https://pj-serverless.vercel.app/api/users/login/${card_id.value}`;
         fetch(url)
         .then((resp) => resp.json())
         .then(function(data) {

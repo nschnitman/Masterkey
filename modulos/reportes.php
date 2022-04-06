@@ -142,17 +142,17 @@
         function btnMaster(){
             ReportSelector = "1"
             console.log("Cambio a Master")
-           $('#zero_config').DataTable().ajax.url( 'https://pj-serverless-nschnitman.vercel.app/api/reportes/iomi/'+ReportSelector).load()
+           $('#zero_config').DataTable().ajax.url( 'https://pj-serverless.vercel.app/api/reportes/iomi/'+ReportSelector).load()
         }
         function btnTelefonos(){
             ReportSelector = "3"
             console.log("Cambio a Telefonos")
-            $('#zero_config').DataTable().ajax.url( 'https://pj-serverless-nschnitman.vercel.app/api/reportes/iomi/'+ReportSelector).load()
+            $('#zero_config').DataTable().ajax.url( 'https://pj-serverless.vercel.app/api/reportes/iomi/'+ReportSelector).load()
         }
         function btnLlaves(){
             ReportSelector = "2"
             console.log("Cambio a Llaves")
-            $('#zero_config').DataTable().ajax.url( 'https://pj-serverless-nschnitman.vercel.app/api/reportes/iomi/'+ReportSelector).load()
+            $('#zero_config').DataTable().ajax.url( 'https://pj-serverless.vercel.app/api/reportes/iomi/'+ReportSelector).load()
         }
         
         /****************************************
@@ -161,7 +161,7 @@
         
         $('#zero_config').DataTable( {
             ajax: {
-              url: 'https://pj-serverless-nschnitman.vercel.app/api/reportes/iomi/'+ReportSelector,
+              url: 'https://pj-serverless.vercel.app/api/reportes/iomi/'+ReportSelector,
              dataSrc: ''
             },
             responsive: true,

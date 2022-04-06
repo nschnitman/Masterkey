@@ -127,7 +127,7 @@
          ****************************************/
         $('#zero_config').DataTable( {
             ajax: {
-              url: 'https://pj-serverless-nschnitman.vercel.app/api/users/view',
+              url: 'https://pj-serverless.vercel.app/api/users/view',
              dataSrc: ''
             },
             columns: [ 

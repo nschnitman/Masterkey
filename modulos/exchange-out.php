@@ -78,7 +78,7 @@
                                 <!-- <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required">
                                 <label for="acceptTerms">I agree with the Terms and Conditions.</label> -->
                                 <div>
-                                    <p>Autorizar a ${last_name, userName}</p>
+                                    <div id="pre-validacion"></div>
                                 </div>
                             </section>
                         </div>
@@ -150,6 +150,9 @@
     //ID para categorizar items
     var taf_id;
     var user_id;
+    var fname 
+    var last_name
+    
 
     //Variables principales para guardar respuestas de las elecciones
     var masterSeleccion = null
@@ -163,6 +166,7 @@ var form = $("#example-form");
     bodyTag: "section",
     transitionEffect: "slideLeft",
     onStepChanging: function(event, currentIndex, newIndex) {
+        preValidacion();
         form.validate().settings.ignore = ":disabled,:hidden";
         return form.valid();
     },
@@ -179,22 +183,23 @@ const checkUser = document.getElementById('checkUser');
 let userExists = 0;
 
 function exchange() {
-    const url = `https://pj-serverless-nschnitman.vercel.app/api/users/card/${card.value}`;
+    const url = `https://pj-serverless.vercel.app/api/users/card/${card.value}`;
     fetch(url)
     .then((resp) => resp.json())
     .then(function(data) {
          return data.map(function(dat) {
              userExists = 1
         user_id = dat.id
+        taf_id = dat.tafkid_id
+        fname = dat.name 
+        last_name = dat.last_name
         document.getElementById("name").placeholder = dat.name
         document.getElementById("surname").placeholder = dat.last_name
         document.getElementById("telefono").placeholder = dat.telefono
         document.getElementById("tafkid").placeholder = dat.tafkid_id
-        taf_id = dat.tafkid_id
          })
     })  
-
-    setTimeout(function() {
+.then(function() {
         if(userExists ===0){
             document.getElementById("alerta-user").innerHTML = "שם משתמש לא קיים"
             if (confirm( "העובד לא רשום. אם אתה רוצה להירשם אותו?")){
@@ -203,7 +208,7 @@ function exchange() {
         }else{
             document.getElementById("alerta-user").innerHTML = "שם משתמש קיים"
         } 
-    }, 1500);
+    })
 
     setTimeout(function(){combinado()}, 3000);
 
@@ -211,7 +216,7 @@ function exchange() {
 
 // Usar la misma funcion de hold para traer toda la data en un solo fetch y dentro de un for segun un switch case elegir 1 2 o 3 y mostrar la funcion actual. 
 function combinado(){
-    const url_master = `https://pj-serverless-nschnitman.vercel.app/api/hold/${user_id}`;
+    const url_master = `https://pj-serverless.vercel.app/api/hold/${user_id}`;
     fetch(url_master)
     .then((resp) => resp.json())
     .then(function(data) {
@@ -228,15 +233,15 @@ function combinado(){
         for (var i = 0; i < data.length; i++) {
             switch(data[i].type) {
                 case "1":
-                    document.getElementById("check-master").value= data[i].id
+                    document.getElementById("check-master").value= data[i].item_id
                     document.getElementById("check-master").disabled = false
                     break;
                 case "2":
-                    document.getElementById("check-llaves").value= data[i].id
+                    document.getElementById("check-llaves").value= data[i].item_id
                     document.getElementById("check-llaves").disabled= false
                     break;
                 case "3": 
-                    document.getElementById("check-telefono").value= data[i].id
+                    document.getElementById("check-telefono").value= data[i].item_id
                     document.getElementById("check-telefono").disabled= false
                     break;
                 default:
@@ -260,6 +265,23 @@ function addL(){
     llaveSeleccion = ''
     llaveSeleccion = document.getElementById('check-llaves').value
     console.log(llaveSeleccion)
+}
+
+function preValidacion() {
+    fullselection = document.getElementById("check-master").checked && document.getElementById("check-llaves").checked && document.getElementById("check-telefono").checked
+  document.getElementById("pre-validacion").innerHTML =  "העובד " + "<strong>" + fname + " " + last_name + "</strong> "+ "מחזיר את הדברים הבאים: " + "<br />"
+  if(document.getElementById("check-master").checked){
+    document.getElementById("pre-validacion").innerHTML +=  "מאסטר"+ "<br />"
+  } 
+  if (document.getElementById("check-llaves").checked){
+    document.getElementById("pre-validacion").innerHTML +=  "מפתחות" + "<br />"
+  }  
+ if(document.getElementById("check-telefono").checked){
+    document.getElementById("pre-validacion").innerHTML +=  "טלפון" +"<br />"
+  } 
+  
+  //  document.getElementById("pre-validacion").innerHTML = "אין בחירות. בבקשה תחור אחורה ותבחר מוצר לחילוף " 
+  
 }
 
 
@@ -307,7 +329,7 @@ addT()
     SendTelefono = document.getElementById("check-telefono").checked
     setTimeout(function() {
     if(SendMaster){
-    fetch('https://pj-serverless-nschnitman.vercel.app/api/hold/'+masterSeleccion, {
+    fetch('https://pj-serverless.vercel.app/api/hold/'+masterSeleccion, {
     method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -316,7 +338,7 @@ addT()
     }).then(respuesta => {
     })
     console.log(AddMaster2)
-    fetch('https://pj-serverless-nschnitman.vercel.app/api/swaps', {
+    fetch('https://pj-serverless.vercel.app/api/swaps', {
     method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -327,7 +349,7 @@ addT()
     
     setTimeout(function() {
     if(SendLlaves){
-    fetch('https://pj-serverless-nschnitman.vercel.app/api/hold/'+llaveSeleccion, {
+    fetch('https://pj-serverless.vercel.app/api/hold/'+llaveSeleccion, {
     method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -335,7 +357,7 @@ addT()
         body: JSON.stringify(AddLlaves)
     }).then(respuesta => {
     })
-    fetch('https://pj-serverless-nschnitman.vercel.app/api/swaps', {
+    fetch('https://pj-serverless.vercel.app/api/swaps', {
     method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -346,7 +368,7 @@ addT()
 
     setTimeout(function() {
     if(SendTelefono){
-    fetch('https://pj-serverless-nschnitman.vercel.app/api/hold/'+telefonoSeleccion, {
+    fetch('https://pj-serverless.vercel.app/api/hold/'+telefonoSeleccion, {
     method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
@@ -354,7 +376,7 @@ addT()
         body: JSON.stringify(AddTelefono)
     }).then(respuesta => {
     })
-    fetch('https://pj-serverless-nschnitman.vercel.app/api/swaps', {
+    fetch('https://pj-serverless.vercel.app/api/swaps', {
     method: 'POST',
         headers: {
             'Content-Type': 'application/json'

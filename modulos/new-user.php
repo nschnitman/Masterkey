@@ -195,7 +195,7 @@
                     type_obed_id: type_obed_id,
                     tafkid_id: tafkid
                 }
-                fetch('https://pj-serverless-nschnitman.vercel.app/api/users', {
+                fetch('https://pj-serverless.vercel.app/api/users', {
                 method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

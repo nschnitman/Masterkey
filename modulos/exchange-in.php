@@ -64,8 +64,8 @@
                                     <input type="checkbox" id="check-master" onclick="master()">
                                     <label class="col-md-3">מאסטר</label>
                                     <div class="col-md-9" id="master-div" style="display: none;">
-                                        <select id="master-select" class="select2 form-control custom-select" style="width: 70%; height:36px;" onselect="addM()"></select>
-                                            <option value="null"></option>
+                                        <select id="master-select" name="master-select" class="select2 form-control custom-select" style="width: 70%; height:36px;" onchange="addM()"></select>
+                                            <option value="0">תבחור מאסטר</option>
                                         </select>
                                     </div>
                                 </div>
@@ -88,7 +88,7 @@
                                 <!-- <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required">
                                 <label for="acceptTerms">I agree with the Terms and Conditions.</label> -->
                                 <div>
-                                    <p>Autorizar a ${last_name, userName}</p>
+                                    <div id="pre-validacion"></div>
                                 </div>
                             </section>
                         </div>
@@ -160,7 +160,9 @@
     //ID para categorizar items
     var taf_id;
     var user_id
-
+    var fname 
+    var last_name
+    
     //Variables principales para guardar respuestas de las elecciones
     var masterSeleccion = null
     var telefonoSeleccion = null
@@ -173,6 +175,7 @@ var form = $("#example-form");
     bodyTag: "section",
     transitionEffect: "slideLeft",
     onStepChanging: function(event, currentIndex, newIndex) {
+        preValidacion();
         form.validate().settings.ignore = ":disabled,:hidden";
         return form.valid();
     },
@@ -196,11 +199,13 @@ function exchange() {
          return data.map(function(dat) {
              userExists = 1
         user_id = dat.id
+        taf_id = dat.tafkid_id
+        fname = dat.name 
+        last_name = dat.last_name
         document.getElementById("name").placeholder = dat.name
         document.getElementById("surname").placeholder = dat.last_name
         document.getElementById("telefono").placeholder = dat.telefono
         document.getElementById("tafkid").placeholder = dat.tafkid_id
-        taf_id = dat.tafkid_id
          })
     })  
 
@@ -217,7 +222,10 @@ function exchange() {
 
 }
 
+var masterSeleccionado
+var masterFlag = 1
 function master(){
+    if (masterFlag == 1){
     const url_master = `https://pj-serverless-nschnitman.vercel.app/api/masterim/${taf_id}`;
     fetch(url_master)
     .then((resp) => resp.json())
@@ -227,8 +235,13 @@ function master(){
             .append('<option value="'+data[i].id + '">'+ data[i].name + '</option>');
         }
     })  
+    masterFlag = 0
+    }
 }
+var telefonoSeleccionado
+var telefonFlag = 1
 function telefon(){
+    if (telefonFlag == 1){
     const url_telefono = `https://pj-serverless-nschnitman.vercel.app/api/telefonos/${taf_id}`;
     fetch(url_telefono)
     .then((resp) => resp.json())
@@ -241,10 +254,16 @@ function telefon(){
         for (var i = 0; i < data.length; i++) {
             $("#telefono-div")
             .append('<div class="custom-control custom-radio"><input value="'+ data[i].id +'"type="radio" class="custom-control-input" id="TcustomControlValidation'+ i +'" name="Tradio-stacked" onclick="addT('+ i +')"><label class="custom-control-label" for="TcustomControlValidation'+ i +'">'+ data[i].name+ '</label></div>');
+            telefonoSeleccionado  = data[i].name
         }
     }})  
+    telefonFlag = 1
+    }
 }
+var llavesSeleccionadas 
+var llavesFlag = 1
 function llaves(){
+    if (llavesFlag == 1){
     const url_llaves = `https://pj-serverless-nschnitman.vercel.app/api/llaves/${taf_id}`;
     fetch(url_llaves)
     .then((resp) => resp.json())
@@ -257,15 +276,23 @@ function llaves(){
         for (var i = 0; i < data.length; i++) {
             $("#llaves-div")
             .append('<div class="custom-control custom-radio"><input value="'+ data[i].id +'"type="radio" class="custom-control-input" id="LcustomControlValidation'+ i +'" name="Lradio-stacked" onclick="addL('+ i +')"><label class="custom-control-label" for="LcustomControlValidation'+ i +'">'+ data[i].name+ '</label></div>');
+            llavesSeleccionadas = data[i].name
         }
     }})  
+    llavesFlag = 0
+    }
     
 }
 
 function addM(){
-    masterSeleccion = ''
+    //masterSeleccion = ''
     var select = document.getElementById('master-select');
+    alert("AddM - Opcion Seleccionada: " + select.value)
     masterSeleccion = select.options[select.selectedIndex].value;
+    masterSeleccionado = select.options[select.selectedIndex].label;
+    if(masterSeleccion === null){
+      document.getElementById("check-master").checked = false
+    }
 }
 function addT(i){
     telefonoSeleccion = ''
@@ -274,6 +301,21 @@ function addT(i){
 function addL(i){
     llaveSeleccion = ''
     llaveSeleccion = document.getElementById('LcustomControlValidation'+i).value
+}
+
+function preValidacion() {
+  document.getElementById("pre-validacion").innerHTML =  "העובד " + fname + " " + last_name + " "+ "לוקח את הדברים הבאים: " + "<br />"
+  alert("Pre-Validacion - CheckBox Master: " + document.getElementById("check-master").checked)
+  alert("Pre-Validacion - MasterSeleccionado: " + masterSeleccionado)
+  if(document.getElementById("check-master").checked){
+    document.getElementById("pre-validacion").innerHTML +=  "מאסטר: " + masterSeleccionado + "<br />"
+  } else if (document.getElementById("check-llaves").checked){
+    document.getElementById("pre-validacion").innerHTML +=  "מפתחות: " + llavesSeleccionadas + "<br />"
+  } else if(document.getElementById("check-telefono").checked){
+    document.getElementById("pre-validacion").innerHTML +=  "טלפון: " + telefonoSeleccionado +"<br />"
+  } else {
+    document.getElementById("pre-validacion").innerHTML = "אין בחירות. בבקשה תחור אחורה ותבחר מוצר לחילוף " 
+  }
 }
 
 

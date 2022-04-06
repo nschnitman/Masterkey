@@ -158,6 +158,9 @@
     var masterSeleccion = null
     var telefonoSeleccion = null
     var llaveSeleccion = null
+    var masterItemId
+    var telefonoItemId
+    var llavesItemId
 
 
 var form = $("#example-form");
@@ -214,6 +217,9 @@ function exchange() {
 
 }
 
+
+
+
 // Usar la misma funcion de hold para traer toda la data en un solo fetch y dentro de un for segun un switch case elegir 1 2 o 3 y mostrar la funcion actual. 
 function combinado(){
     const url_master = `https://pj-serverless.vercel.app/api/hold/${user_id}`;
@@ -235,14 +241,17 @@ function combinado(){
                 case "1":
                     document.getElementById("check-master").value= data[i].id
                     document.getElementById("check-master").disabled = false
+                    masterItemId = data[i].item_id
                     break;
                 case "2":
                     document.getElementById("check-llaves").value= data[i].id
                     document.getElementById("check-llaves").disabled= false
+                    llavesItemId = data[i].item_id
                     break;
                 case "3": 
                     document.getElementById("check-telefono").value= data[i].id
                     document.getElementById("check-telefono").disabled= false
+                    telefonoItemId = data[i].item_id
                     break;
                 default:
                     break;
@@ -306,21 +315,21 @@ addT()
     const AddMaster2 = {
         type: '1',
         user_id: user_id,
-        item_id: masterSeleccion,
+        item_id: masterItemId,
         flow: "OUT",
         signature: "Nico",
     }
     const AddLlaves2 = {
         type: '2',
         user_id: user_id,
-        item_id: llaveSeleccion,
+        item_id: llavesItemId,
         flow: "OUT",
         signature: "Nico",
     }
     const AddTelefono2 = {
         type: '3',
         user_id: user_id,
-        item_id: telefonoSeleccion,
+        item_id: telefonoItemId,
         flow: "OUT",
         signature: "Nico",
     }

@@ -287,7 +287,6 @@ function llaves(){
 function addM(){
     //masterSeleccion = ''
     var select = document.getElementById('master-select');
-    alert("AddM - Opcion Seleccionada: " + select.value)
     masterSeleccion = select.options[select.selectedIndex].value;
     masterSeleccionado = select.options[select.selectedIndex].label;
     if(masterSeleccion === null){
@@ -305,8 +304,6 @@ function addL(i){
 
 function preValidacion() {
   document.getElementById("pre-validacion").innerHTML =  "העובד " + "<strong>" + fname + " " + last_name + "</strong> " + "לוקח את הדברים הבאים: " + "<br />"
-  alert("Pre-Validacion - CheckBox Master: " + document.getElementById("check-master").checked)
-  alert("Pre-Validacion - MasterSeleccionado: " + masterSeleccionado)
   if(document.getElementById("check-master").checked){
     document.getElementById("pre-validacion").innerHTML +=  "מאסטר: " + masterSeleccionado + "<br />"
   } else if (document.getElementById("check-llaves").checked){
@@ -372,7 +369,7 @@ function resultado(){
         },
         body: JSON.stringify(AddMaster)
     }).then(respuesta => {
-    })
+    }).then(
     console.log(AddMaster2)
     fetch('https://pj-serverless.vercel.app/api/swaps', {
     method: 'POST',
@@ -381,7 +378,7 @@ function resultado(){
         },
         body: JSON.stringify(AddMaster2)
     }).then(respuesta => {
-    })}},  1500)
+    }))}},  1500)
     
     setTimeout(function() {
     if(SendLlaves){
@@ -392,7 +389,7 @@ function resultado(){
         },
         body: JSON.stringify(AddLlaves)
     }).then(respuesta => {
-    })
+    }).then(
     fetch('https://pj-serverless.vercel.app/api/swaps', {
     method: 'POST',
         headers: {
@@ -400,7 +397,8 @@ function resultado(){
         },
         body: JSON.stringify(AddLlaves2)
     }).then(respuesta => {
-    })}},1500)
+    }))
+    }},1500)
 
     setTimeout(function() {
     if(SendTelefono){
@@ -411,7 +409,7 @@ function resultado(){
         },
         body: JSON.stringify(AddTelefono)
     }).then(respuesta => {
-    })
+    }).then(
     fetch('https://pj-serverless.vercel.app/api/swaps', {
     method: 'POST',
         headers: {
@@ -419,7 +417,7 @@ function resultado(){
         },
         body: JSON.stringify(AddTelefono2)
     }).then(respuesta => {
-    })}}, 1500)
+    }))}}, 1500)
     
     setTimeout(function(){
       alert("בוצע בהצלחה")

@@ -233,15 +233,15 @@ function combinado(){
         for (var i = 0; i < data.length; i++) {
             switch(data[i].type) {
                 case "1":
-                    document.getElementById("check-master").value= data[i].item_id
+                    document.getElementById("check-master").value= data[i].id
                     document.getElementById("check-master").disabled = false
                     break;
                 case "2":
-                    document.getElementById("check-llaves").value= data[i].item_id
+                    document.getElementById("check-llaves").value= data[i].id
                     document.getElementById("check-llaves").disabled= false
                     break;
                 case "3": 
-                    document.getElementById("check-telefono").value= data[i].item_id
+                    document.getElementById("check-telefono").value= data[i].id
                     document.getElementById("check-telefono").disabled= false
                     break;
                 default:

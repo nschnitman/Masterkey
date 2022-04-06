@@ -369,7 +369,7 @@ function resultado(){
         },
         body: JSON.stringify(AddMaster)
     }).then(respuesta => {
-    }).then(
+    })
     console.log(AddMaster2)
     fetch('https://pj-serverless.vercel.app/api/swaps', {
     method: 'POST',
@@ -378,7 +378,7 @@ function resultado(){
         },
         body: JSON.stringify(AddMaster2)
     }).then(respuesta => {
-    }))}},  1500)
+    })}},  1500)
     
     setTimeout(function() {
     if(SendLlaves){
@@ -389,7 +389,7 @@ function resultado(){
         },
         body: JSON.stringify(AddLlaves)
     }).then(respuesta => {
-    }).then(
+    })
     fetch('https://pj-serverless.vercel.app/api/swaps', {
     method: 'POST',
         headers: {
@@ -397,8 +397,7 @@ function resultado(){
         },
         body: JSON.stringify(AddLlaves2)
     }).then(respuesta => {
-    }))
-    }},1500)
+    })}},1500)
 
     setTimeout(function() {
     if(SendTelefono){
@@ -409,7 +408,7 @@ function resultado(){
         },
         body: JSON.stringify(AddTelefono)
     }).then(respuesta => {
-    }).then(
+    })
     fetch('https://pj-serverless.vercel.app/api/swaps', {
     method: 'POST',
         headers: {
@@ -417,7 +416,7 @@ function resultado(){
         },
         body: JSON.stringify(AddTelefono2)
     }).then(respuesta => {
-    }))}}, 1500)
+    })}}, 1500)
     
     setTimeout(function(){
       alert("בוצע בהצלחה")

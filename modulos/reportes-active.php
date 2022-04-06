@@ -1,6 +1,6 @@
 <?include("../header.php")?>
 <base href="../" />
-    <title>Pj-MasterKey - Reportes</title>
+    <title>Pj-MasterKey - Reportes Activos</title>
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
     <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">

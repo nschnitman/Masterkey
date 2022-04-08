@@ -1,6 +1,6 @@
 <?include("../header.php")?>
 <base href="../" />
-    <title>Pj-MasterKey - Reportes</title>
+    <title>Pj-MasterKey - Cars</title>
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
     <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
@@ -24,12 +24,12 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Tables</h4>
+                        <h4 class="page-title">רשימת רכבים עובדים</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                    <li class="breadcrumb-item active" aria-current="page">רשימת רכבים</li>
                                 </ol>
                             </nav>
                         </div>
@@ -48,27 +48,18 @@
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-12">
-                       <div class="card">
-                       <div class="card-body">
-                       <h5 class="card-title">Select Report</h5>
-                            <button type="button" id="master-button" class="btn btn-outline-secondary">Masterim</button>
-                            <button type="button" id="telefonos-button" class="btn btn-outline-secondary">Telefonos</button>
-                            <button type="button" id="llaves-button" class="btn btn-outline-secondary">Llaves</button>
-                       </div>
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Reporte Iomi</h5>
+                                <h5 class="card-title">רכבי עובדים</h5>
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Hora IN</th>
-                                                <th>Item</th>
-                                                <th>Name</th>
-                                                <th>Last Name</th>
-                                                <th>Kabat</th>
-                                                <th>Hora OUT</th>
-                                                <th>Kabat</th>
+                                                <th>ID</th>
+                                                <th>מס רכב</th>
+                                                <th>שם בעל הרכב</th>
+                                                <th>סוג הרכב</th>
+                                                <th>צבע הרכב</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -129,48 +120,20 @@
     <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
     <script>
         /****************************************
-         *       Report selector                *
-         ****************************************/
-        let ReportSelector = "1"
-        document.getElementById("master-button").addEventListener("click", btnMaster);
-        document.getElementById("telefonos-button").addEventListener("click", btnTelefonos);
-        document.getElementById("llaves-button").addEventListener("click", btnLlaves);
-        
-        
-        function btnMaster(){
-            ReportSelector = "1"
-            console.log("Cambio a Master")
-           $('#zero_config').DataTable().ajax.url( 'https://pj-serverless.vercel.app/api/reportes/iomi/'+ReportSelector).load()
-        }
-        function btnTelefonos(){
-            ReportSelector = "3"
-            console.log("Cambio a Telefonos")
-            $('#zero_config').DataTable().ajax.url( 'https://pj-serverless.vercel.app/api/reportes/iomi/'+ReportSelector).load()
-        }
-        function btnLlaves(){
-            ReportSelector = "2"
-            console.log("Cambio a Llaves")
-            $('#zero_config').DataTable().ajax.url( 'https://pj-serverless.vercel.app/api/reportes/iomi/'+ReportSelector).load()
-        }
-        
-        /****************************************
          *       Basic Table                   *
          ****************************************/
-        
         $('#zero_config').DataTable( {
             ajax: {
-              url: 'https://pj-serverless.vercel.app/api/reportes/iomi/'+ReportSelector,
+              url: 'https://pj-serverless.vercel.app/api/users/view',
              dataSrc: ''
             },
-            responsive: true,
             columns: [ 
-                        { data: 'Hora IN' },
-                        { data: 'item' },
+                        { data: 'id' },
                         { data: 'name' },
                         { data: 'last_name' },
-                        { data: 'kabat1' },
-                        { data: 'Hora Out' },
-                        { data: 'kabat2' }
+                        { data: 'telefono' },
+                        { data: 'tafkid' },
+                        { data: 'majlaka' }
                      ]
         } );
     </script>

@@ -63,7 +63,6 @@
                                                 <th>מס׳ ת.ז</th>
                                                 <th>צילום</th>
                                                 <th>סטטוס</th>
-                                                <th>EDIT</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -144,14 +143,8 @@
                         { data: 'name' },
                         { data: 'last_name' },
                         { data: 'tz' },
-                        { data: 'photo_tz', 
-                         defaultContent: "<a href="">Image</a>"
-                        },
-                        { data: 'status' },
-                        {
-                          data: null,
-                          defaultContent: "<button>Edit</button>"
-                        }
+                        { data: 'photo_tz'},
+                        { data: 'status' }
                      ]
         } );
     </script>

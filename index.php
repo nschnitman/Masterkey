@@ -399,7 +399,7 @@
     <script>
         $( document ).ready(function() {
             user_id = localStorage.getItem('user_id');
-            sessionActive();
+            //sessionActive();
             progress();
         });
         

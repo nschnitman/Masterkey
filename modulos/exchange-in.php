@@ -159,7 +159,6 @@
 
    $( document ).ready(function() {
       kabat = localStorage.getItem('user_id');
-      sessionActive();
   });
       // Basic Example with form
     //ID para categorizar items

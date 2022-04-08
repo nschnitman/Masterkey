@@ -127,6 +127,12 @@
          *       Basic Table                   *
          ****************************************/
         $('#zero_config2').DataTable( {
+            keys: {
+                editor: editor
+            },
+            buttons: [
+                'print'
+            ],
             ajax: {
               url: 'https://pj-serverless.vercel.app/api/extras',
              dataSrc: ''

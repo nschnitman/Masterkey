@@ -52,15 +52,18 @@
                             <div class="card-body">
                                 <h5 class="card-title">רשימה אקסטרס</h5>
                                 <div class="table-responsive">
-                                    <table id="zero_config" class="table table-striped table-bordered">
+                                    <table id="zero_config2" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>'מס</th>
+                                                <th>חברה</th>
+                                                <th>תפקיד</th>
                                                 <th>שם</th>
                                                 <th>שם משפחה</th>
                                                 <th>מס׳ ת.ז</th>
                                                 <th>צילום</th>
                                                 <th>סטטוס</th>
+                                                <th>EDIT</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -123,18 +126,26 @@
         /****************************************
          *       Basic Table                   *
          ****************************************/
-        $('#zero_config').DataTable( {
+        $('#zero_config2').DataTable( {
             ajax: {
-              url: 'https://pj-serverless.vercel.app/api/users/view',
+              url: 'https://pj-serverless.vercel.app/api/extras',
              dataSrc: ''
             },
             columns: [ 
                         { data: 'id' },
+                        { data: 'company' },
+                        { data: 'tafkid' },
                         { data: 'name' },
                         { data: 'last_name' },
-                        { data: 'telefono' },
-                        { data: 'tafkid' },
-                        { data: 'majlaka' }
+                        { data: 'tz' },
+                        { data: 'photo_tz', 
+                         defaultContent: "<a href="">Image</a>"
+                        },
+                        { data: 'status' },
+                        {
+                          data: null,
+                          defaultContent: "<button>Edit</button>"
+                        }
                      ]
         } );
     </script>

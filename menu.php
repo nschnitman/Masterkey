@@ -79,7 +79,7 @@
 								<a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
 								<a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="javascript:localStorage.clear();"><i class="fa fa-power-off m-r-5 m-l-5"></i> יציאה</a>
+								<a class="dropdown-item" href="javascript:logout();"><i class="fa fa-power-off m-r-5 m-l-5"></i> יציאה</a>
 							</div>
 						</li>
 						<!-- ============================================================== -->

@@ -156,7 +156,12 @@
 <script src="assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
 
 <script>
-    // Basic Example with form
+
+   $( document ).ready(function() {
+      kabat = localStorage.getItem('user_id');
+      sessionActive();
+  });
+      // Basic Example with form
     //ID para categorizar items
     var taf_id;
     var user_id
@@ -296,7 +301,6 @@ function addM(){
 function addT(i){
     telefonoSeleccion = ''
     telefonoSeleccion = document.getElementById('TcustomControlValidation'+i).value
-    alert(telefonoSeleccion)
 }
 function addL(i){
     llaveSeleccion = ''

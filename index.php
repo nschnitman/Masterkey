@@ -426,8 +426,8 @@
                  Llaves_rest = data[0].Llaves_rest
                  TotalUsers = data[0].TotalUsers
                  ActiveUsers = data[0].ActiveUsers
-            })  
-            setTimeout(function() {
+            })
+            .then(function() {
                 let Masterim = (100 / Masterim_total) * Masterim_rest
                 let Telefonos = (100 / Telefonos_total) * Telefonos_rest
                 let Llaves = (100 / Llaves_total) * Llaves_rest
@@ -446,7 +446,7 @@
                 $('#telefono-bar').attr('aria-valuenow', Telefonos).css('width', Telefonos+'%');
                 $('#llave-bar').attr('aria-valuenow', Llaves).css('width', Llaves+'%');
                 $('#user-bar').attr('aria-valuenow', Users).css('width', Users+'%');
-            },1000)
+            })
            
         
         }

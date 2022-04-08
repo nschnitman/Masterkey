@@ -126,9 +126,6 @@
          *       Basic Table                   *
          ****************************************/
         $('#zero_config2').DataTable( {
-            keys: {
-                editor: editor
-            },
             buttons: [
                 'print'
             ],

@@ -146,6 +146,11 @@
 <script src="assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
 
 <script>
+
+var kabat
+ $( document ).ready(function() {
+    kabat = localStorage.getItem('user_id');
+});
     // Basic Example with form
     //ID para categorizar items
     var taf_id;
@@ -317,21 +322,21 @@ addT()
         user_id: user_id,
         item_id: masterItemId,
         flow: "OUT",
-        signature: "Nico",
+        signature: kabat,
     }
     const AddLlaves2 = {
         type: '2',
         user_id: user_id,
         item_id: llavesItemId,
         flow: "OUT",
-        signature: "Nico",
+        signature: kabat,
     }
     const AddTelefono2 = {
         type: '3',
         user_id: user_id,
         item_id: telefonoItemId,
         flow: "OUT",
-        signature: "Nico",
+        signature: kabat,
     }
     SendMaster = document.getElementById("check-master").checked
     SendLlaves =  document.getElementById("check-llaves").checked

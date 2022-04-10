@@ -142,7 +142,21 @@
                         { data: 'name' },
                         { data: 'last_name' },
                         { data: 'tz' },
-                        { data: 'photo_tz'},
+                        { 
+                             "data": "photo_tz",
+                             "render": function(data, type, row, meta){
+                                if(data != null){
+                                    if(type === 'display'){
+                                        data = '<a href="' + data + '">' + ' IMAGE ' + '</a>';
+                                    }
+                                }else{
+                                    data = "NO IMAGE"
+                                }
+                        
+                                return data;
+                             
+                             }
+                          }, 
                         { data: 'status' }
                      ]
         } );

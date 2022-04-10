@@ -35,5 +35,19 @@
 	<script src="assets/libs/jquery/dist/jquery.min.js"></script>
 	<script src="dist/js/jquery.ui.touch-punch-improved.js"></script>
 	<script src="dist/js/jquery-ui.min.js"></script>
+	<script>
+	var url = window.location.href;
+	var result = url.substring(url.length - 1)
+	
+	window.onload = function() {
+		if(result == "1"){
+			alert("בוצה בהצלחה");		
+		}
+	};
+	
+	</script>
+	
+	
+	
 </body>
 </html>

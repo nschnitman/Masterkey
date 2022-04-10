@@ -156,7 +156,7 @@
 <script src="assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
 
 <script>
-
+var kabat
    $( document ).ready(function() {
       kabat = localStorage.getItem('user_id');
   });
@@ -257,7 +257,7 @@ function telefon(){
     else{
         for (var i = 0; i < data.length; i++) {
             $("#telefono-div")
-            .append('<div class="custom-control custom-radio"><input value="'+ data[i].id +'"type="radio" class="custom-control-input" id="TcustomControlValidation'+ i +'" name="Tradio-stacked" onclick="addT('+ i +')"><label class="custom-control-label" for="TcustomControlValidation'+ i +'">'+ data[i].name+ '</label></div>');
+            .append('<div class="custom-control custom-radio"><input value="'+ data[i].id +'"type="radio" class="custom-control-input" id="TcustomControlValidation'+ i +'" name="Tradio-stacked" onclick="addT('+ i +')"><label class="custom-control-label" for="TcustomControlValidation'+ i +'">'+ data[i].name+ '</label><input type="hidden" id="THiddencustomControlValidation'+ i +'" value="'+ data[i].name +'" ></div>');
             //telefonoSeleccionado  = data[i].name
         }
     }})  
@@ -279,7 +279,7 @@ function llaves(){
     else{
         for (var i = 0; i < data.length; i++) {
             $("#llaves-div")
-            .append('<div class="custom-control custom-radio"><input value="'+ data[i].id +'"type="radio" class="custom-control-input" id="LcustomControlValidation'+ i +'" name="Lradio-stacked" onclick="addL('+ i +')"><label class="custom-control-label" for="LcustomControlValidation'+ i +'">'+ data[i].name+ '</label></div>');
+            .append('<div class="custom-control custom-radio"><input value="'+ data[i].id +'"type="radio" class="custom-control-input" id="LcustomControlValidation'+ i +'" name="Lradio-stacked" onclick="addL('+ i +')"><label class="custom-control-label" for="LcustomControlValidation'+ i +'">'+ data[i].name+ '</label><input type="hidden" id="LHiddencustomControlValidation'+ i +'" value="'+ data[i].name +'" ></div>');
             //llavesSeleccionadas = data[i].name
         }
     }})  
@@ -300,10 +300,13 @@ function addM(){
 function addT(i){
     telefonoSeleccion = ''
     telefonoSeleccion = document.getElementById('TcustomControlValidation'+i).value
+    telefonoSeleccionado = document.getElementById('THiddencustomControlValidation'+i).value
 }
 function addL(i){
     llaveSeleccion = ''
     llaveSeleccion = document.getElementById('LcustomControlValidation'+i).value
+    llavesSeleccionadas = document.getElementById('LHiddencustomControlValidation'+i).value
+    
 }
 
 function preValidacion() {
@@ -348,21 +351,21 @@ function resultado(){
         user_id: user_id,
         item_id: masterSeleccion,
         flow: "IN",
-        signature: "Nico",
+        signature: kabat,
     }
     const AddLlaves2 = {
         type: '2',
         user_id: user_id,
         item_id: llaveSeleccion,
         flow: "IN",
-        signature: "Nico",
+        signature: kabat,
     }
     const AddTelefono2 = {
         type: '3',
         user_id: user_id,
         item_id: telefonoSeleccion,
         flow: "IN",
-        signature: "Nico",
+        signature: kabat,
     }
     var SendMaster = document.getElementById("check-master").checked
     var SendLlaves =  document.getElementById("check-llaves").checked
@@ -377,7 +380,6 @@ function resultado(){
         body: JSON.stringify(AddMaster)
     }).then(respuesta => {
     })
-    console.log(AddMaster2)
     fetch('https://pj-serverless.vercel.app/api/swaps', {
     method: 'POST',
         headers: {

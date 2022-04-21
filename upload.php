@@ -41,6 +41,9 @@ $password = "Monday29/Lost";
 $dbname = "pj-masterkey";
 
 $tz = $_POST["tz"];
+$jebra = $_POST["jebra"];
+$tafkid = $_POST["tafkid"];
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -48,7 +51,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = 'INSERT INTO extras (tz, photo_tz) VALUES ('.$tz.',"'.$target_file.'" )';
+$sql = 'INSERT INTO extras (company, tafkid, tz, photo_tz) VALUES ("'.$jebra.'","'.$tafkid.'",'.$tz.',"'.$target_file.'" )';
 
 
 // Check if $uploadOk is set to 0 by an error

@@ -1,6 +1,6 @@
 <?include("../header.php")?>
 <base href="../" />
-    <title>Pj-MasterKey - Reportes Activos</title>
+    <title>Pj-MasterKey - Extras Activos</title>
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
     <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
@@ -24,12 +24,12 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Tables</h4>
+                        <h4 class="page-title">אקסטרס</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                    <li class="breadcrumb-item"><a href="#">דף הבית</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">דו״ח אקסטרס</li>
                                 </ol>
                             </nav>
                         </div>
@@ -48,27 +48,24 @@
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-12">
-                       <div class="card">
-                       <div class="card-body">
-                       <h5 class="card-title">Select Report</h5>
-                            <button type="button" id="master-button" class="btn btn-outline-secondary">Masterim</button>
-                            <button type="button" id="telefonos-button" class="btn btn-outline-secondary">Telefonos</button>
-                            <button type="button" id="llaves-button" class="btn btn-outline-secondary">Llaves</button>
-                       </div>
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Reporte Iomi</h5>
+                                <h5 class="card-title">רשימה אקסטרס</h5>
                                 <div class="table-responsive">
-                                    <table id="zero_config" class="table table-striped table-bordered">
+                                    <table id="zero_config2" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Hora IN</th>
-                                                <th>Item</th>
-                                                <th>Name</th>
-                                                <th>Last Name</th>
-                                                <th>Kabat</th>
-                                                <th>Hora OUT</th>
-                                                <th>Kabat</th>
+                                                <th>'מס</th>
+                                                <th>מס׳ ת.ז</th>
+                                                <th>חברה</th>
+                                                <th>תפקיד</th>
+                                                <th>שם</th>
+                                                <th>שם משפחה</th>
+                                                <th>שעה כניסה</th>
+                                                <th>קב״ט חותם</th>
+                                                <th>שעה יציאה</th>
+                                                <th>קב״ט חותם</th>
+                                                <th>סטטוס</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -127,54 +124,114 @@
     <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
     <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
     <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
     <script>
-        /****************************************
-         *       Report selector                *
-         ****************************************/
-        let ReportSelector = "1"
-        document.getElementById("master-button").addEventListener("click", btnMaster);
-        document.getElementById("telefonos-button").addEventListener("click", btnTelefonos);
-        document.getElementById("llaves-button").addEventListener("click", btnLlaves);
-        
-        
-        function btnMaster(){
-            ReportSelector = "1"
-            console.log("Cambio a Master")
-           $('#zero_config').DataTable().ajax.url( 'https://pj-serverless.vercel.app/api/reportes/iomi/'+ReportSelector).load()
-        }
-        function btnTelefonos(){
-            ReportSelector = "3"
-            console.log("Cambio a Telefonos")
-            $('#zero_config').DataTable().ajax.url( 'https://pj-serverless.vercel.app/api/reportes/iomi/'+ReportSelector).load()
-        }
-        function btnLlaves(){
-            ReportSelector = "2"
-            console.log("Cambio a Llaves")
-            $('#zero_config').DataTable().ajax.url( 'https://pj-serverless.vercel.app/api/reportes/iomi/'+ReportSelector).load()
-        }
-        
         /****************************************
          *       Basic Table                   *
          ****************************************/
-        
-        $('#zero_config').DataTable( {
+        $('#zero_config2').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                'print'
+            ],
             ajax: {
-              url: 'https://pj-serverless.vercel.app/api/reportes/iomi/'+ReportSelector,
+              url: 'https://pj-serverless.vercel.app/api/turnos_extras/activos/',
              dataSrc: ''
             },
-            responsive: true,
+            fields: [ {
+                    label: 'שעה כניסה',
+                    name:  'in',
+                    type:  'datetime',
+                    format: 'HH:mm',
+                    fieldInfo: '24 hour clock format'
+                }, {
+                    label: 'שעה יציאה',
+                    name:  'out',
+                    type:  'datetime',
+                    format: 'HH:mm:',
+                    fieldInfo: '24 hour clock format '
+                }
+            ],
             columns: [ 
-                        { data: 'Hora IN' },
-                        { data: 'item' },
+                        { data: 'id' },
+                        { data: 'tz' },
+                        { data: 'company' },
+                        { data: 'tafkid' },
                         { data: 'name' },
                         { data: 'last_name' },
-                        { data: 'kabat1' },
-                        { data: 'Hora Out' },
-                        { data: 'kabat2' }
-                     ]
+                        { data: 'in' },
+                        { data: 'kabat_in' },
+                        { data: 'out' },
+                        { data: 'kabat_out' },
+                        { data: 'status' },
+                     ],
+             columnDefs : [
+             { targets : [2],
+               render : function (data, type, row) {
+                 switch(data) {
+                    case 1 : return 'גולוורק (חלאד)'; 
+                        break;
+                    case 2 : return 'תיגבור (איברהים)'; 
+                        break;
+                    case 3 : return 'מרדי (מאהר)'; 
+                        break;
+                    case 4 : return 'ארקס (דיאה)'; 
+                        break;
+                    case 5 : return 'תת אלף (טארק)'; 
+                        break;
+                    default: return 'NULL';
+                 }
+                 }
+             },
+             { targets : [3],
+                render : function (data, type, row) {
+                  switch(data) {
+                     case 1 : return  'מלצר'; 
+                     break;
+                     case 2 : return  'סטיוורד'; 
+                     break;
+                     case 3 : return 'חדרן'; 
+                     break;
+                     case 4 : return  'טבח'; 
+                     break;
+                     case 5 : return 'מחזנאי'; 
+                     break;
+                     default: return 'NULL';
+                  }
+              }
+          },
+          { targets : [-1],
+                  render : function (data, type, row) {
+                    switch(data) {
+                        case 0 : return  'אושר'; 
+                            break;
+                        case 1 : return  'אסור'; 
+                            break;
+                       default: return 'NULL';
+                    }
+                }
+            }
+         ]
         } );
+        
+        
+        /**
+          Jebra
+            0 = choose
+            {value: "1", text: 'גולוורק (חלאד)'},
+            {value: "2", text: 'תיגבור (איברהים)'},
+            {value: "3", text: 'מרדי (מאהר)'},
+            {value: "4", text: 'ארקס (דיאה)'},
+            {value: "5", text: 'תת אלף (טארק)'}
+          Tafkid:
+            0 = choose
+            {value: "1", text: 'מלצר'},
+            {value: "2", text: 'סטיוורד'},
+            {value: "3", text: 'חדרן'},
+            {value: "4", text: 'טבח'},
+            {value: "5", text: 'מחזנאי'}
+        **/
     </script>
 
 </body>

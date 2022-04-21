@@ -64,7 +64,7 @@
                                     <div class="form-group row">
                                         <label for="lname" class="col-sm-3 text-right control-label col-form-label">Telefono</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control phone-inputmask" id="telefono" placeholder="Telefono Here">
+                                            <input dir="ltr" type="text" class="form-control phone-inputmask" id="telefono" placeholder="Telefono Here">
                                         </div>
                                     </div>
                                     <div class="form-group row">

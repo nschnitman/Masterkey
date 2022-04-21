@@ -107,7 +107,9 @@
 						<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">דוחות </span></a>
 							<ul aria-expanded="false" class="collapse  first-level">
 								<li class="sidebar-item"><a href="modulos/reportes.php" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> דוח יומי </span></a></li>
-								<li class="sidebar-item"><a href="modulos/reportes-actives.php" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> דוח פעילים </span></a></li>
+								<li class="sidebar-item"><a href="modulos/reportes-actives.php" class="sidebar-link"><i class="mdi mdi-file-check"></i><span class="hide-menu"> דוח פעילים </span></a></li>
+								<li class="sidebar-item"><a href="modulos/extras-reporte.php" class="sidebar-link"><i class="mdi mdi-human"></i><span class="hide-menu"> דוח אקסטרס </span></a></li>
+								<li class="sidebar-item"><a href="modulos/extras-activos.php" class="sidebar-link"><i class="mdi mdi-human-greeting"></i><span class="hide-menu"> דוח אקסטרס פעילים </span></a></li>
 							</ul>
 						</li>
 						<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-face"></i><span class="hide-menu">עובדי מלון </span></a>
@@ -122,7 +124,8 @@
 						<li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-worker"></i><span class="hide-menu">עובדי אקסטרה </span></a>
 							<ul aria-expanded="false" class="collapse  first-level">
 								<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="modulos/extras.php" aria-expanded="false"><i class="mdi mdi-human-greeting"></i><span class="hide-menu">רשימת עובדי אקסטרה</span></a></li>
-								<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="modulos/extras.php" aria-expanded="false"><i class="mdi mdi-human-handsup"></i><span class="hide-menu">עובד אקסטרה חדש</span></a></li>	
+								<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="modulos/extra-in.php" aria-expanded="false"><i class="mdi mdi-human-handsup"></i><span class="hide-menu">כניסה אקסטרה</span></a></li>	
+								<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="modulos/extra-out.php" aria-expanded="false"><i class="mdi mdi-human-handsdown"></i><span class="hide-menu">יציאה אקסטרה</span></a></li>	
 							</ul>
 						</li>			
 						

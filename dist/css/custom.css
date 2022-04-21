@@ -30,6 +30,9 @@
       unicode-bidi: embed;
   }
 
+div.dt-button{
+  float: left;
+}
 
 
 @media only screen and (max-width: 480px) {

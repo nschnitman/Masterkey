@@ -96,6 +96,7 @@
     <!-- This page plugin js -->
     <!-- ============================================================== -->
     <script>
+    
     $('[data-toggle="tooltip"]').tooltip();
     $(".preloader").fadeOut();
     // ============================================================== 
@@ -107,6 +108,13 @@
       event.preventDefault()
       login() 
     }});
+   
+   function registered(){
+        var check_session = localStorage.getItem('user_id');
+            if (check_session != null) {
+                top.location.href = "index.php"
+            }
+    }
 
     function login(){
         //data-toggle="modal" data-target="#Modal2"

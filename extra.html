@@ -22,9 +22,27 @@
 			<span>מספר תעודת זהות</span>
 			<br>
 		<form action="upload.php" method="POST" enctype="multipart/form-data">
-			<input id="tz" name="tz" type="text" pattern="[0-9]*" inputmode="numeric" placeholder="תקלית מספר ת.ז"/>
+			<input id="tz" name="tz" type="text" pattern="[0-9]*" inputmode="numeric" placeholder="תקלית מספר ת.ז" required/>
 			<br>
-			<input id="fileToUpload" type="file" name="fileToUpload" />
+			<select name="jebra" id="jebra" class="select2 form-control custom-select" style="width: 70%; height:36px;" required>
+				<option value="0" >תבחר חברה</option>
+				<option value="1">גולוורק (חלאד)</option>
+				<option value="2">תיגבור (איברהים)</option>
+				<option value="3">מרדי (מאהר)</option>
+				<option value="4">ארקס (דיאה)</option>
+				<option value="5">תת אלף (טארק)</option>
+			</select>
+			<br/>
+			<select name="tafkid" id="tafkid" class="select2 form-control custom-select" style="width: 70%; height:36px;" required>
+				<option value="0" >תבחר תפקיד</option>
+				<option value="1">מלצר</option>
+				<option value="2">סטיוורד</option>
+				<option value="3">חדרן</option>
+				<option value="4">טבח</option>
+				<option value="5">מחזנאי</option>
+			</select>
+			<br>
+			<input id="fileToUpload" type="file" name="fileToUpload" required/>
 			<br>
 			<button type="submit" id="upload-button"> Upload </button>
 		</form>
@@ -39,6 +57,14 @@
 	var url = window.location.href;
 	var result = url.substring(url.length - 1)
 	
+	window.onsubmit = () => {
+		if(document.getElementById("jebra").value == 0){
+			alert("תבחר חברה אחד")
+		}
+		if(document.getElementById("tafkid").value == 0){
+			alert("תבחר תפקיד אחד")
+		}
+	}
 	window.onload = function() {
 		if(result == "1"){
 			alert("בוצה בהצלחה");		

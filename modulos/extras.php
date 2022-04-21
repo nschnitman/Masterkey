@@ -61,8 +61,10 @@
                                                 <th>שם</th>
                                                 <th>שם משפחה</th>
                                                 <th>מס׳ ת.ז</th>
+                                                <th>טלפון</th>
                                                 <th>צילום</th>
                                                 <th>סטטוס</th>
+                                                <th>לערוך</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -128,8 +130,14 @@
          *       Basic Table                   *
          ****************************************/
         $('#zero_config2').DataTable( {
+            dom: 'Bfrtip',
             buttons: [
-                'print'
+                {
+                    extend: 'print',
+                    exportOptions: {
+                        columns: [ 0, 1, 2, 3, 4, 5, 6 ]
+                    }
+                }
             ],
             ajax: {
               url: 'https://pj-serverless.vercel.app/api/extras',
@@ -142,24 +150,99 @@
                         { data: 'name' },
                         { data: 'last_name' },
                         { data: 'tz' },
+                        { data: 'telefono' },
                         { 
                              "data": "photo_tz",
                              "render": function(data, type, row, meta){
                                 if(data != null){
                                     if(type === 'display'){
-                                        data = '<a href="' + data + '">' + ' IMAGE ' + '</a>';
+                                        data = '<a href="' + data + '">' + ' תמונה ' + '</a>';
                                     }
                                 }else{
-                                    data = "NO IMAGE"
+                                    data = "אין תמונה"
                                 }
                         
                                 return data;
                              
                              }
                           }, 
-                        { data: 'status' }
-                     ]
+                        { data: 'status' },
+                        { 
+                             "data": "id",
+                             "render": function(data, type, row, meta){
+                             if(type === 'display'){
+                                data = '<a href="modulos/edit-extra.php?id=' + data + '">' + ' לערוך ' + '</a>';
+                             }
+                             return data;
+                             }
+                          }
+                     ],
+             columnDefs : [
+             { targets : [1],
+               render : function (data, type, row) {
+                 switch(data) {
+                    case 1 : return 'גולוורק (חלאד)'; 
+                        break;
+                    case 2 : return 'תיגבור (איברהים)'; 
+                        break;
+                    case 3 : return 'מרדי (מאהר)'; 
+                        break;
+                    case 4 : return 'ארקס (דיאה)'; 
+                        break;
+                    case 5 : return 'תת אלף (טארק)'; 
+                        break;
+                    default: return 'NULL';
+                 }
+                 }
+             },
+             { targets : [2],
+                render : function (data, type, row) {
+                  switch(data) {
+                     case 1 : return  'מלצר'; 
+                     break;
+                     case 2 : return  'סטיוורד'; 
+                     break;
+                     case 3 : return 'חדרן'; 
+                     break;
+                     case 4 : return  'טבח'; 
+                     break;
+                     case 5 : return 'מחזנאי'; 
+                     break;
+                     default: return 'NULL';
+                  }
+              }
+          },
+          { targets : [-2],
+                  render : function (data, type, row) {
+                    switch(data) {
+                        case 0 : return  'אושר'; 
+                            break;
+                        case 1 : return  'אסור'; 
+                            break;
+                       default: return 'NULL';
+                    }
+                }
+            }
+         ]
         } );
+        
+        
+        /**
+          Jebra
+            0 = choose
+            {value: "1", text: 'גולוורק (חלאד)'},
+            {value: "2", text: 'תיגבור (איברהים)'},
+            {value: "3", text: 'מרדי (מאהר)'},
+            {value: "4", text: 'ארקס (דיאה)'},
+            {value: "5", text: 'תת אלף (טארק)'}
+          Tafkid:
+            0 = choose
+            {value: "1", text: 'מלצר'},
+            {value: "2", text: 'סטיוורד'},
+            {value: "3", text: 'חדרן'},
+            {value: "4", text: 'טבח'},
+            {value: "5", text: 'מחזנאי'}
+        **/
     </script>
 
 </body>

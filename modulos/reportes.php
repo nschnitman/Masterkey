@@ -127,6 +127,9 @@
     <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
     <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
     <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+    
     <script>
         /****************************************
          *       Report selector                *
@@ -158,6 +161,10 @@
          ****************************************/
         
         $('#zero_config').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                'print'
+            ],
             ajax: {
               url: 'https://pj-serverless.vercel.app/api/reportes/iomi/'+ReportSelector,
              dataSrc: ''

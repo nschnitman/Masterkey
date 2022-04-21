@@ -27,7 +27,7 @@
             <div class="container-fluid">
               <div class="card">
                 <div class="card-body wizard-content">
-                    <h4 class="card-title">החלפה חדשה</h4>
+                    <h4 class="card-title">החזרה חדשה</h4>
                     <h6 class="card-subtitle"></h6>
                     <form id="example-form" action="#" class="m-t-40">
                         <div>
@@ -321,21 +321,18 @@ addT()
         type: '1',
         user_id: user_id,
         item_id: masterItemId,
-        flow: "OUT",
         signature: kabat,
     }
     const AddLlaves2 = {
         type: '2',
         user_id: user_id,
         item_id: llavesItemId,
-        flow: "OUT",
         signature: kabat,
     }
     const AddTelefono2 = {
         type: '3',
         user_id: user_id,
         item_id: telefonoItemId,
-        flow: "OUT",
         signature: kabat,
     }
     SendMaster = document.getElementById("check-master").checked
@@ -350,16 +347,15 @@ addT()
         },
         body: JSON.stringify(AddMaster)
     }).then(respuesta => {
+      fetch('https://pj-serverless.vercel.app/api/swaps', {
+      method: 'PUT',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(AddMaster2)
+      })
     })
-    console.log(AddMaster2)
-    fetch('https://pj-serverless.vercel.app/api/swaps', {
-    method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(AddMaster2)
-    }).then(respuesta => {
-    })}},  500)
+    }}),  500)
     
     setTimeout(function() {
     if(SendLlaves){
@@ -370,14 +366,13 @@ addT()
         },
         body: JSON.stringify(AddLlaves)
     }).then(respuesta => {
-    })
     fetch('https://pj-serverless.vercel.app/api/swaps', {
-    method: 'POST',
+    method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(AddLlaves2)
-    }).then(respuesta => {
+    })
     })}},500)
 
     setTimeout(function() {
@@ -389,15 +384,16 @@ addT()
         },
         body: JSON.stringify(AddTelefono)
     }).then(respuesta => {
-    })
     fetch('https://pj-serverless.vercel.app/api/swaps', {
-    method: 'POST',
+    method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(AddTelefono2)
-    }).then(respuesta => {
-    })}}, 500)
+    })
+    })
+    }}, 500)
+    
     setTimeout(function(){
       alert("בוצע בהצלחה")
       top.location.href = 'modulos/reportes.php'        

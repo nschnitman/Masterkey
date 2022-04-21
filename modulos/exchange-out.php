@@ -354,8 +354,7 @@ addT()
           },
           body: JSON.stringify(AddMaster2)
       })
-    })
-    }}),  500)
+    })}},  500)
     
     setTimeout(function() {
     if(SendLlaves){

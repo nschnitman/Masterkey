@@ -68,9 +68,9 @@
                      <!-- Column -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card card-hover">
-                            <div class="box bg-warning text-center">
-                                <h1 class="font-light text-white"><i class="mdi mdi-archive"></i></h1>
-                                <h6 class="text-white">אבידות</h6>
+                            <div class="box bg-warning text-center" data-toggle="modal" data-target="#Modal2">
+                                <h1 class="font-light text-white"><i class="mdi mdi-worker"></i></h1>
+                                <h6 class="text-white">אקסטרס</h6>
                             </div>
                         </div>
                     </div>
@@ -365,6 +365,31 @@
                     <div class="col col2">
                         <a href="modulos/exchange-out.php" style="padding-right: 30%;">
                             <h2 class="badge badge-pill badge-danger">חילוף יציאה</h2>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal 2 -->
+    <div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true ">
+        <div class="modal-dialog" role="document ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">רישום אקסטרס</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true ">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body frow">
+                    <div class="col col2">
+                        <a href="modulos/extra-in.php" style="padding-right: 30%;">
+                            <h2 class="badge badge-pill badge-success">כניסה</h2>
+                        </a>
+                    </div>
+                    <div class="col col2">
+                        <a href="modulos/extra-out.php" style="padding-right: 30%;">
+                            <h2 class="badge badge-pill badge-danger">יציאה</h2>
                         </a>
                     </div>
                 </div>

@@ -134,13 +134,16 @@
             var last_name = data[0].last_name
             localStorage.setItem('last_name', last_name)
         })
-        setTimeout(function () {
-          if(userExists === 0){
-            alert("שם משתמש לא קיים")
-          }else{
-            top.location.href = "index.php"
-          }
-        },2500)
+        .then(() => {
+           if(userExists === 0){
+              alert("שם משתמש לא קיים")
+            }else{
+              top.location.href = "index.php"
+            }
+        })
+        .catch(() => {
+           window.reload();
+        })
     };
     </script>
 

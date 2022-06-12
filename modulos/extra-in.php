@@ -177,10 +177,50 @@ function exchange() {
         fname = dat.name 
         last_name = dat.last_name
         status = dat.status
+        let scompany
+        let stafkid
+        switch(company) {
+            case 1: 
+              scompany =  'גולוורק (חלאד)'; 
+                break;
+            case 2 : 
+              scompany =  'תיגבור (איברהים)'; 
+                break;
+            case 3 : 
+              scompany =  'מרדי (מאהר)'; 
+                break;
+            case 4 : 
+              scompany =  'ארקס (דיאה)'; 
+                break;
+            case 5 : 
+              scompany =  'תת אלף (טארק)'; 
+                break;
+            default: 
+              scompany =  'NULL';
+        }
+        switch(tafkid) {
+             case 1 : 
+              stafkid =   'מלצר'; 
+                break;
+             case 2 : 
+              stafkid =   'סטיוורד'; 
+                break;
+             case 3 : 
+              stafkid =  'חדרן'; 
+                break;
+             case 4 : 
+              stafkid =   'טבח'; 
+                break;
+             case 5 : 
+              stafkid =  'מחזנאי'; 
+                break;
+             default: 
+              stafkid =  'NULL';
+        }
         document.getElementById("name").placeholder = dat.name
         document.getElementById("surname").placeholder = dat.last_name
-        document.getElementById("company").placeholder = dat.company
-        document.getElementById("tafkid").placeholder = dat.tafkid
+        document.getElementById("company").placeholder = scompany
+        document.getElementById("tafkid").placeholder = stafkid
          })
     }).then( () => {
       if(userExists === 0){
@@ -213,6 +253,7 @@ function preEnvio(){
 function resultado(){
     const extraIn = {
         tz: teudatzeut.value,
+        hora_in: document.getElementById("hourEntry"),
         kabat_in: kabat
     }
     fetch('https://pj-serverless.vercel.app/api/turnos_extras', {
@@ -223,6 +264,7 @@ function resultado(){
         body: JSON.stringify(extraIn)
     }).then(respuesta => {
       alert("בוצע בהצלחה")
+      console.log(document.getElementById("hourEntry"))
       top.location.href = 'modulos/extras-activos.php'    
     }).catch(rejected => {
           console.log(rejected);

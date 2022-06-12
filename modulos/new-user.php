@@ -62,7 +62,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">טלפון</label>
+                                        <label for="lname" class="col-sm-3 text-left control-label col-form-label">טלפון</label>
                                         <div class="col-sm-9">
                                             <input dir="ltr" type="text"  class="form-control text-right phone-inputmask" id="telefono" placeholder="תכתוב מספר טלפון">
                                         </div>
@@ -87,14 +87,14 @@
                                                 </optgroup>
                                                 <optgroup label="קבלה">
                                                     <option value="7">בל בוי</option>
-                                                    <option value="11">מנהל תורן</option>
+                                                    <option value="12">מנהל תורן</option>
                                                 </optgroup>
                                                 <optgroup label="ביטחון">
                                                     <option value="9">קבט</option>
                                                     <option value="10">טיים קיפר</option>
                                                 </optgroup>
                                                 <optgroup label="הנהלה">
-                                                    <option value="12">מנהל תורן</option>
+                                                    <option value="11">מנהל תורן</option>
                                                 </optgroup>
                                             </select>
                                         </div>
@@ -206,7 +206,7 @@
                     },
                     body: JSON.stringify(userAdd)
                 }).then(respuesta => {
-                    alert("El usuario ha sido creado con exito.")
+                    alert("העובד נרשם בהצלחה.")
                     location.reload();
                 })
             }

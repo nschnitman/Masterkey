@@ -1,6 +1,6 @@
 <?include("../header.php")?>
 <base href="../" />
-    <title>Pj-MasterKey - Users</title>
+    <title>Pj-MasterKey - עובדים</title>
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
     <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
@@ -24,12 +24,12 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Tables</h4>
+                        <h4 class="page-title">עודבי מלון</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                    <li class="breadcrumb-item"><a href="#">בית</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">עובדים</li>
                                 </ol>
                             </nav>
                         </div>
@@ -50,17 +50,17 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Basic Datatable</h5>
+                                <h5 class="card-title">רשימה עובדי מלון</h5>
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
-                                                <th>Name</th>
-                                                <th>Last Name</th>
-                                                <th>Telephone</th>
-                                                <th>Tafkid</th>
-                                                <th>Majlaka</th>
+                                                <th>מס׳</th>
+                                                <th>שם</th>
+                                                <th>שם משפחה</th>
+                                                <th>טלפון</th>
+                                                <th>תפקיד</th>
+                                                <th>מחלקה</th>
                                             </tr>
                                         </thead>
                                     </table>

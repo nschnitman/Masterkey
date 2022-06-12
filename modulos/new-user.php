@@ -1,6 +1,6 @@
 <? include('../header.php')?>
 <base href="../" />
-    <title>Pj-MasterKey - New User</title>
+    <title>Pj-MasterKey - עובד חדש</title>
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="assets/libs/select2/dist/css/select2.min.css">
     <link rel="stylesheet" type="text/css" href="assets/libs/jquery-minicolors/jquery.minicolors.css">
@@ -25,12 +25,12 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Form Basic</h4>
+                        <h4 class="page-title">עובד חדש</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                    <li class="breadcrumb-item"><a href="#">בית</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">עודים</li>
                                 </ol>
                             </nav>
                         </div>
@@ -48,27 +48,27 @@
                         <div class="card">
                             <form class="form-horizontal" id="newuser" action="/">
                                 <div class="card-body">
-                                    <h4 class="card-title">Personal Info</h4>
+                                    <h4 class="card-title">פרטים אישים</h4>
                                     <div class="form-group row">
-                                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">First Name</label>
+                                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">שם</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="fname" placeholder="First Name Here">
+                                            <input type="text" class="form-control" id="fname" placeholder="תכתוב שם פרטי">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">Last Name</label>
+                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">שם משפחה</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="last_name" placeholder="Last Name Here">
+                                            <input type="text" class="form-control" id="last_name" placeholder="תכתוב שם שפחה">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">Telefono</label>
+                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">טלפון</label>
                                         <div class="col-sm-9">
-                                            <input dir="ltr" type="text" class="form-control phone-inputmask" id="telefono" placeholder="Telefono Here">
+                                            <input dir="ltr" type="text"  class="form-control text-right phone-inputmask" id="telefono" placeholder="תכתוב מספר טלפון">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Tafkid</label>
+                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">תפקיד</label>
                                         <div class="col-sm-9">
                                             <select class="select2 form-control custom-select" style="width: 100%; height:36px;" id="tafkid">
                                                 <option value="">תבחר תפקיד...</option>
@@ -87,24 +87,28 @@
                                                 </optgroup>
                                                 <optgroup label="קבלה">
                                                     <option value="7">בל בוי</option>
+                                                    <option value="11">מנהל תורן</option>
                                                 </optgroup>
                                                 <optgroup label="ביטחון">
                                                     <option value="9">קבט</option>
                                                     <option value="10">טיים קיפר</option>
                                                 </optgroup>
+                                                <optgroup label="הנהלה">
+                                                    <option value="12">מנהל תורן</option>
+                                                </optgroup>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">CARD ID</label>
+                                        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">מס׳ כרטיס</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="card_id" placeholder="Swipe Card">
+                                            <input type="text" class="form-control" id="card_id" placeholder="תעביר כרטיס עובד">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="border-top">
                                     <div class="card-body">
-                                        <button type="submit"  class="btn btn-primary">Submit</button>
+                                        <button type="submit"  class="btn btn-primary">שמירה</button>
                                     </div>
                                 </div>
                             </form>

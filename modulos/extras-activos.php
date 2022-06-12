@@ -139,20 +139,6 @@
               url: 'https://pj-serverless.vercel.app/api/turnos_extras/activos/',
              dataSrc: ''
             },
-            fields: [ {
-                    label: 'שעה כניסה',
-                    name:  'in',
-                    type:  'datetime',
-                    format: 'HH:mm',
-                    fieldInfo: '24 hour clock format'
-                }, {
-                    label: 'שעה יציאה',
-                    name:  'out',
-                    type:  'datetime',
-                    format: 'HH:mm:',
-                    fieldInfo: '24 hour clock format '
-                }
-            ],
             columns: [ 
                         { data: 'id' },
                         { data: 'tz' },

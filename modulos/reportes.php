@@ -1,6 +1,6 @@
 <?include("../header.php")?>
 <base href="../" />
-    <title>Pj-MasterKey - Reportes</title>
+    <title>Pj-MasterKey - דוח יומי</title>
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="assets/extra-libs/multicheck/multicheck.css">
     <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
@@ -24,12 +24,12 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Tables</h4>
+                        <h4 class="page-title">דוח יומי</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                    <li class="breadcrumb-item"><a href="#">בית</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">דוח יומי</li>
                                 </ol>
                             </nav>
                         </div>
@@ -50,25 +50,25 @@
                     <div class="col-12">
                        <div class="card">
                        <div class="card-body">
-                       <h5 class="card-title">Select Report</h5>
-                            <button type="button" id="master-button" class="btn btn-outline-secondary">Masterim</button>
-                            <button type="button" id="telefonos-button" class="btn btn-outline-secondary">Telefonos</button>
-                            <button type="button" id="llaves-button" class="btn btn-outline-secondary">Llaves</button>
+                       <h5 class="card-title">תבחר דוח</h5>
+                            <button type="button" id="master-button" class="btn btn-outline-secondary">מאסטרים</button>
+                            <button type="button" id="telefonos-button" class="btn btn-outline-secondary">טלפונים</button>
+                            <button type="button" id="llaves-button" class="btn btn-outline-secondary">מפתחות</button>
                        </div>
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Reporte Iomi</h5>
+                                <h5 class="card-title">דוח יומי</h5>
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>Hora IN</th>
-                                                <th>Item</th>
-                                                <th>Name</th>
-                                                <th>Last Name</th>
-                                                <th>Kabat</th>
-                                                <th>Hora OUT</th>
-                                                <th>Kabat</th>
+                                                <th>שעה כניסה</th>
+                                                <th>דבר</th>
+                                                <th>שם</th>
+                                                <th>שם משפחה</th>
+                                                <th>קבט</th>
+                                                <th>שעה יציאה</th>
+                                                <th>קבט</th>
                                             </tr>
                                         </thead>
                                     </table>

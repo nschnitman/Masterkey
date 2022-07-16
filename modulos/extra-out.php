@@ -250,7 +250,7 @@ function addZero(i) {
 }
 
 function preEnvio(){
-  document.getElementById("hourEntry").innerHTML = addZero(timestamp.getHours()) + ":" + addZero(timestamp.getMinutes());
+  document.getElementById("hourEntry").innerHTML = timestamp.getDate() + "/" + (timestamp.getMonth() + 1) + "/" + timestamp.getFullYear() + "  " + addZero(timestamp.getHours()) + ":" + addZero(timestamp.getMinutes());
 }
 
 function resultado(){

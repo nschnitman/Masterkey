@@ -141,7 +141,7 @@ var timestamp = new Date()
     var fname 
     var last_name
     var status
-    
+  var registro
 var form = $("#example-form");
  form.children("div").steps({
     headerTag: "h3",
@@ -247,13 +247,14 @@ function addZero(i) {
 }
 
 function preEnvio(){
-  document.getElementById("hourEntry").innerHTML = addZero(timestamp.getHours()) + ":" + addZero(timestamp.getMinutes());
+  document.getElementById("hourEntry").innerHTML = timestamp.getFullYear() + "-" + (timestamp.getMonth() + 1) + "-" + timestamp.getDate() + " " + addZero(timestamp.getHours()) + ":" + addZero(timestamp.getMinutes()) + ":" + addZero(timestamp.getSeconds());
+  registro = timestamp.getFullYear() + "-" + (timestamp.getMonth() + 1) + "-" + timestamp.getDate() + " " + addZero(timestamp.getHours()) + ":" + addZero(timestamp.getMinutes()) + ":" + addZero(timestamp.getSeconds());
 }
 
 function resultado(){
     const extraIn = {
         tz: teudatzeut.value,
-        hora_in: document.getElementById("hourEntry"),
+        hora_in: registro,
         kabat_in: kabat
     }
     fetch('https://pj-serverless.vercel.app/api/turnos_extras', {
@@ -264,7 +265,7 @@ function resultado(){
         body: JSON.stringify(extraIn)
     }).then(respuesta => {
       alert("בוצע בהצלחה")
-      console.log(document.getElementById("hourEntry"))
+      console.log(registro)
       top.location.href = 'modulos/extras-activos.php'    
     }).catch(rejected => {
           console.log(rejected);

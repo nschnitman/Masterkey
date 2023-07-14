@@ -37,10 +37,10 @@ if (
   $uploadOk = 0;
 }
 
-$servername = "179.43.123.27";
-$username = "pj-masterkey";
-$password = "Monday29/Lost";
-$dbname = "pj-masterkey";
+$servername = "HOST";
+$username = "USER";
+$password = "PASSWORD";
+$dbname = "DATABASE";
 
 $tz = $_POST["tz"];
 $jebra = $_POST["jebra"];

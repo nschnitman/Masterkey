@@ -9,16 +9,17 @@
     <meta name="description" content="Web App for exchange of master keycard for employes">
     <meta name="author" content="Nicolas Schnitman">
     <!-- Favicon icon -->
+    <base href="../" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
     <link rel="manifest" href="assets/favicon/site.webmanifest">
-    <base href="../" />
     <title>Pj-MasterKey - החזרת דברים</title>
     <!-- Custom CSS -->
     <link href="assets/libs/jquery-steps/jquery.steps.css" rel="stylesheet">
     <link href="assets/libs/jquery-steps/steps.css" rel="stylesheet">
     <link href="dist/css/style-rtl.min.css" rel="stylesheet">
+    <link href="dist/css/exchange.css" rel="stylesheet">
 
 </head>
 

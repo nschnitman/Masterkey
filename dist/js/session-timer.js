@@ -7,7 +7,7 @@
 //     if(now-setupTime > hours*60*60*1000) {
 //         localStorage.clear()
 //         localStorage.setItem('setupTime', now);
-//         top.location.href = "login.php"
+//         top.location.href = "login.html"
 //         
 //     }
 // }

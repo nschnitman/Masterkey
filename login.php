@@ -48,7 +48,7 @@
                     <div class="text-center p-t-20 p-b-20">
                         <span class="db"><img src="assets/images/keycard.png" height="150px" alt="logo" /></span>
                         <h3 class="login-text" style="white-space: pre">Pj-MasterKey - מערכת טיים קיפר</h3>
-                        <p>לרשום 2022 כדי להיכנס</p>
+                        <p  class="login-text" style="white-space: pre">לרשום 2022 כדי להיכנס</p>
                     </div>
                     <!-- Form -->
                     <form class="form-horizontal m-t-20" id="loginform">

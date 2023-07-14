@@ -8,7 +8,7 @@ To get started with Pj-Masterkey, you will need a web server with PHP installed,
 
 1. Clone this repository to your web server.
 2. Import the database.sql file into your MySQL database.
-3. Edit the config.php file with your database connection details.
+3. Edit the config.html file with your database connection details.
 4. Open a web browser and navigate to the URL of the web application.
 ## Features
 

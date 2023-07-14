@@ -113,7 +113,7 @@
    function registered(){
         var check_session = localStorage.getItem('user_id');
             if (check_session != null) {
-                top.location.href = "index.php"
+                top.location.href = "index.html"
             }
     }
 
@@ -139,7 +139,7 @@
            if(userExists === 0){
               alert("שם משתמש לא קיים")
             }else{
-              top.location.href = "index.php"
+              top.location.href = "index.html"
             }
         })
         .catch(() => {

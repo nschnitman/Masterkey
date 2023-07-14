@@ -315,6 +315,10 @@
      ****************************************/
 
     $('#zero_config').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'print'
+        ],
         ajax: {
             url: 'https://pj-serverless.vercel.app/api/reportes/actives/' + ReportSelector,
             dataSrc: ''

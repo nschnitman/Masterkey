@@ -320,7 +320,7 @@
             'print'
         ],
         ajax: {
-            url: 'https://pj-serverless.vercel.app/api/reportes/actives/' + ReportSelector,
+            url: 'https://pj-serverless.vercel.app/api/reportes/activo/' + ReportSelector,
             dataSrc: ''
         },
         responsive: true,

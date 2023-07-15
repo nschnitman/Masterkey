@@ -107,7 +107,7 @@
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:logout();"><i class="fa fa-power-off m-r-5 m-l-5"></i> יציאה</a>
+                                <a class="dropdown-item" href="javascript:logout();" id="logout"><i class="fa fa-power-off m-r-5 m-l-5"></i> יציאה</a>
                             </div>
                         </li>
                         <!-- ============================================================== -->
@@ -573,14 +573,17 @@
     <!--Custom JavaScript -->
     <script src="dist/js/custom.min.js"></script>
     <script src="dist/js/login.js"></script>
+    <script src="dist/js/logout.js"></script>
     <!-- this page js -->
     <script src="assets/libs/moment/min/moment.min.js"></script>
     <script>
         $(document).ready(function() {
-            user_id = localStorage.getItem('user_id');
+            user_id = sessionStorage.getItem('user_id');
             //sessionActive();
             progress();
         });
+
+        document.getElementById('logout').addEventListener('click', logout);
 
         var Masterim_total
         var Masterim_rest

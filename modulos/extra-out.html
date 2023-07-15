@@ -277,6 +277,7 @@
     <script src="dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="dist/js/custom.min.js"></script>
+    <script src="dist/js/logout.js"></script>
     <!-- this page js -->
     <script src="assets/libs/jquery-steps/build/jquery.steps.min.js"></script>
     <script src="assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
@@ -284,7 +285,7 @@
     <script>
         var kabat
         $(document).ready(function() {
-            kabat = localStorage.getItem('user_id');
+            kabat = sessionStorage.getItem('user_id');
         });
         var timestamp = new Date()
         //ID para categorizar items

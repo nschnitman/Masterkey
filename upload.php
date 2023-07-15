@@ -37,10 +37,16 @@ if (
   $uploadOk = 0;
 }
 
-$servername = "HOST";
-$username = "USER";
-$password = "PASSWORD";
-$dbname = "DATABASE";
+include("db.php");
+
+//if the file db.php is not present, set variables to default.
+if ($servername == '' ){
+  $servername = '';
+  $username = '';
+  $password = '';
+  $dbname = '';
+}
+
 
 $tz = $_POST["tz"];
 $jebra = $_POST["jebra"];

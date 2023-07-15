@@ -65,7 +65,7 @@ if ($uploadOk == 0) {
     //echo "The file has been uploaded.";
 
     if ($conn->query($sql) === TRUE) {
-      header("Location: http://179.43.123.27/pj-masterkey/extra.html?status=1");
+      header("Location: extra.html?status=1");
       die();
     } else {
       echo "Error: " . $sql . "<br>" . $conn->error;

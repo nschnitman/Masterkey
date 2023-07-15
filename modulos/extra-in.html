@@ -419,10 +419,9 @@
         body: JSON.stringify(extraIn)
       }).then(respuesta => {
         alert("בוצע בהצלחה")
-        console.log(registro)
         top.location.href = 'modulos/extras-activos.html'
       }).catch(rejected => {
-        console.log(rejected);
+        console.error(rejected);
       });
 
 
